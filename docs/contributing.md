@@ -109,3 +109,17 @@ Open an [issue](https://github.com/tiltedlabs-ai/mcschemora/issues) for a bug or
 proposed change, or submit a
 [pull request](https://github.com/tiltedlabs-ai/mcschemora/pulls) with the change
 and the checks you ran.
+
+## Pull requests and release notes
+
+The PR template is copied unchanged from
+[Steve Mao's simple template](https://github.com/stevemao/github-issue-templates/blob/master/simple/PULL_REQUEST_TEMPLATE.md),
+whose author has [waived copyright](https://github.com/stevemao/github-issue-templates/blob/master/LICENSE.md).
+GitHub fills new PR descriptions from it once it is merged into the default branch.
+
+The release-note configuration in `.github/release.yml` uses
+[GitHub's documented example](https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes).
+When drafting a release, choose the tag and click **Generate release notes**.
+PRs labeled `dependencies` appear separately; other PRs appear under Features.
+Review the generated notes before publishing. For the first release, add a
+description of the initial features even if there are no merged PRs to list.
