@@ -52,16 +52,14 @@ or [contributor setup](https://github.com/tiltedlabs-ai/mcschemora/blob/master/C
 ## Showcase
 
 Shan shui mountain scroll:
-[script](https://github.com/tiltedlabs-ai/mcschemora/blob/master/examples/jade_scroll.py)
-and [run command](https://github.com/tiltedlabs-ai/mcschemora/blob/master/examples/README.md#build-the-jade-mountain-scroll).
+[source code](https://github.com/tiltedlabs-ai/mcschemora/blob/master/examples/jade_scroll.py)
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/tiltedlabs-ai/mcschemora/master/docs/assets/jade-scroll.png" alt="Jade mountain scroll with floating islands, waterfalls, and a pavilion">
 </p>
 
 Gyroid rainbow reef:
-[script](https://github.com/tiltedlabs-ai/mcschemora/blob/master/examples/reef.py)
-and [run command](https://github.com/tiltedlabs-ai/mcschemora/blob/master/examples/README.md#build-the-gyroid-rainbow-reef).
+[source code](https://github.com/tiltedlabs-ai/mcschemora/blob/master/examples/reef.py)
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/tiltedlabs-ai/mcschemora/master/docs/assets/reef.png" alt="Procedural rainbow gyroid reef on a dark plinth">
