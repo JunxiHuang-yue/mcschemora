@@ -1,4 +1,4 @@
-.PHONY: setup rebuild build check-dist verify format lint docs docs-check docs-wasm
+.PHONY: setup rebuild build check-dist verify format lint docs docs-check docs-wasm docs-build docs-serve
 
 setup:
 	uv sync --locked
@@ -25,6 +25,12 @@ docs: rebuild docs-wasm
 
 docs-check: rebuild docs-wasm
 	uv run --locked python scripts/generate_docs.py --check
+
+docs-build:
+	uv run --locked --only-group docs zensical build --clean
+
+docs-serve:
+	uv run --locked --only-group docs zensical serve
 
 format:
 	cargo fmt --all

@@ -18,6 +18,8 @@ __pycache__/
 .eggs/
 build/
 dist/
+site/
+.cache/
 
 # Tool caches and coverage output.
 .ruff_cache/

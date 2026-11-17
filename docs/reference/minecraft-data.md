@@ -73,7 +73,7 @@ Native renders do not evaluate per-position biomes. Unsupported tints produce
 diagnostics. Sprite diagrams use bundled wiki sheets and need no visual download.
 
 The prepared bundle has a manifest with sources and limitations. See the
-[bundle specification](../../src/catalog/storage/native/SOURCE.md).
+[bundle specification](https://github.com/tiltedlabs-ai/mcschemora/blob/main/src/catalog/storage/native/SOURCE.md).
 
 ## Recipe data
 
@@ -104,12 +104,12 @@ The index enumerates alternatives once per distinct ingredient; repeated uses
 share a choice. Original definitions and tags retain the full alternatives,
 including mixed-material combinations. Crafting recipes come first; entries are
 otherwise ordered by recipe ID. See the
-[recipe source record](../../src/catalog/recipes/SOURCE.md) for tracker details
+[recipe source record](https://github.com/tiltedlabs-ai/mcschemora/blob/main/src/catalog/recipes/SOURCE.md) for tracker details
 and regeneration commands.
 
 ## Asset attribution
 
-The root [LICENSE](../../LICENSE) covers project code. Data and assets retain
+The root [LICENSE](https://github.com/tiltedlabs-ai/mcschemora/blob/main/LICENSE) covers project code. Data and assets retain
 their own sources and terms. The [source overview](sources.md) links to upstream
 revisions, licenses, local changes, and regeneration instructions. Keep these
 records when updating or redistributing assets.

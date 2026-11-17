@@ -36,7 +36,7 @@ Arguments after `*` are keyword-only. Types and properties are documented below.
 
 ### Function inspect_schematics
 
-[Source](../../bindings/python/python/mcschemora/__init__.py#L1494)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/python/mcschemora/__init__.py#L1494)
 
 ```python
 inspect_schematics(
@@ -57,7 +57,7 @@ Combines resource counts and inspection details for multiple schematics.
 
 ### Schematic
 
-[Source](../../bindings/python/python/mcschemora/__init__.py#L371)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/python/mcschemora/__init__.py#L371)
 
 A versioned schematic containing named regions and metadata.
 
@@ -540,7 +540,7 @@ Checks conversion errors and losses without writing or changing the schematic.
 
 ### MinecraftData
 
-[Source](../../bindings/python/python/mcschemora/__init__.py#L232)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/python/mcschemora/__init__.py#L232)
 
 Shared access to pinned Java catalogs and cached rendering assets.
 
@@ -629,7 +629,7 @@ Loads the requested and shared rendering catalogs for offline rendering.
 
 ### Region
 
-[Source](../../bindings/python/python/mcschemora/__init__.py#L960)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/python/mcschemora/__init__.py#L960)
 
 An editing handle for a named region within a schematic.
 
@@ -778,7 +778,7 @@ The manager for NBT attached to this region's blocks.
 
 ### ScheduledTick
 
-[Source](../../bindings/python/python/mcschemora/__init__.py#L1373)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/python/mcschemora/__init__.py#L1373)
 
 A scheduled update retained from an imported Litematic region.
 
@@ -802,7 +802,7 @@ ScheduledTick.order: int
 
 ### Selection
 
-[Source](../../bindings/python/python/mcschemora/__init__.py#L1135)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/python/mcschemora/__init__.py#L1135)
 
 A set of region-local cells and entities that reads current content.
 
@@ -967,7 +967,7 @@ Returns a local Y layer as a text grid followed by a block-state legend.
 
 ### Block
 
-[Source](../../bindings/python/python/mcschemora/__init__.py#L76)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/python/mcschemora/__init__.py#L76)
 
 Immutable block description.
 
@@ -996,7 +996,7 @@ Returns the full block-state string with properties in sorted order.
 
 ### Bounds
 
-[Source](../../bindings/python/python/mcschemora/__init__.py#L138)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/python/mcschemora/__init__.py#L138)
 
 A box with an inclusive start and exclusive upper bounds.
 
@@ -1012,7 +1012,7 @@ Bounds.size: Position
 
 ### Fragment
 
-[Source](../../bindings/python/python/mcschemora/__init__.py#L1316)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/python/mcschemora/__init__.py#L1316)
 
 An independent copy of selected cells, attached data, and entities.
 
@@ -1027,7 +1027,7 @@ Cell counts along X, Y, and Z in the copied bounding box.
 
 ### Report
 
-[Source](../../bindings/python/python/mcschemora/__init__.py#L191)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/python/mcschemora/__init__.py#L191)
 
 Issues found during game-rule validation or export preflight.
 
@@ -1065,7 +1065,7 @@ Returns labeled issues, or "No issues found." for an empty report.
 
 ### RepairChange
 
-[Source](../../bindings/python/python/mcschemora/__init__.py#L156)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/python/mcschemora/__init__.py#L156)
 
 A repaired block, identified by region and local position.
 
@@ -1085,7 +1085,7 @@ RepairChange.after: Block
 
 ### RepairReport
 
-[Source](../../bindings/python/python/mcschemora/__init__.py#L173)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/python/mcschemora/__init__.py#L173)
 
 Changes applied by repair and cases skipped because their context is unknown.
 
@@ -1107,7 +1107,7 @@ The number of blocks changed.
 
 ### Function block
 
-[Source](../../bindings/python/python/mcschemora/__init__.py#L115)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/python/mcschemora/__init__.py#L115)
 
 `block(identifier: str, **properties: PropertyValue) -> Block`
 
@@ -1122,7 +1122,7 @@ Creates a block description, adding the minecraft namespace if omitted.
 
 ### Function water_source
 
-[Source](../../bindings/python/python/mcschemora/__init__.py#L132)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/python/mcschemora/__init__.py#L132)
 
 `water_source() -> Block`
 
@@ -1130,7 +1130,7 @@ Returns a water block with level=0.
 
 ### Function bed
 
-[Source](../../bindings/python/src/lib.rs#L727)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/src/lib.rs#L727)
 
 `bed(*, color: str = 'red', head_toward: str = 'north') -> Placement`
 
@@ -1145,7 +1145,7 @@ Creates a bed placement anchored at the foot block when placed.
 
 ### Function door
 
-[Source](../../bindings/python/src/lib.rs#L748)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/src/lib.rs#L748)
 
 ```python
 door(
@@ -1172,7 +1172,7 @@ Creates a door placement anchored at the lower block when placed.
 
 ### Function sign
 
-[Source](../../bindings/python/src/lib.rs#L789)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/src/lib.rs#L789)
 
 ```python
 sign(
@@ -1197,7 +1197,7 @@ Creates a standing-sign placement with plain text on its front face.
 
 ### Function chest
 
-[Source](../../bindings/python/src/lib.rs#L769)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/src/lib.rs#L769)
 
 ```python
 chest(
@@ -1218,7 +1218,7 @@ Creates a single-chest placement with optional inventory contents.
 
 ### Function item
 
-[Source](../../bindings/python/python/mcschemora/__init__.py#L1332)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/python/mcschemora/__init__.py#L1332)
 
 `item(identifier: str, *, count: int = 1, components: str | None = None) -> _Item`
 
@@ -1234,7 +1234,7 @@ Creates an inventory item value for chest().
 
 ### Function mob
 
-[Source](../../bindings/python/python/mcschemora/__init__.py#L1355)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/python/mcschemora/__init__.py#L1355)
 
 `mob(identifier: str, *, persistent: bool = True, nbt: str | None = None) -> _Mob`
 
@@ -1250,7 +1250,7 @@ Creates a free-entity description for Region.entities.add().
 
 ### Registry
 
-[Source](../../bindings/python/python/mcschemora/__init__.py#L331)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/python/mcschemora/__init__.py#L331)
 
 Block schemas for a schematic's version, obtained through its registry.
 
@@ -1268,7 +1268,7 @@ Returns a block schema for this schematic's Minecraft version.
 
 ### Entity
 
-[Source](../../bindings/python/python/mcschemora/__init__.py#L1394)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/python/mcschemora/__init__.py#L1394)
 
 An immutable snapshot of a entity returned by Entities.get().
 
@@ -1286,7 +1286,7 @@ Entity.nbt: str
 
 ### Entities
 
-[Source](../../bindings/python/python/mcschemora/__init__.py#L1408)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/python/mcschemora/__init__.py#L1408)
 
 Access to a region's entities through schematic-local integer references.
 
@@ -1350,7 +1350,7 @@ Iterates a snapshot of this region's entity references.
 
 ### BlockEntities
 
-[Source](../../bindings/python/python/mcschemora/__init__.py#L1467)
+[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/bindings/python/python/mcschemora/__init__.py#L1467)
 
 Access to typed NBT attached to blocks at region-local cell coordinates.
 
@@ -1519,7 +1519,7 @@ export class Schematic {
 
 ## Rust
 
-Rust's public types and documentation comments are available in the [source](../../src/lib.rs). Build the complete Rust reference locally:
+Rust's public types and documentation comments are available in the [source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/src/lib.rs). Build the complete Rust reference locally:
 
 ```sh
 cargo doc -p mcschemora --no-deps --open

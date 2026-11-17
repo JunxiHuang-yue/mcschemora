@@ -24,7 +24,7 @@ classifiers = [
 
 [project.urls]
 Repository = "https://github.com/tiltedlabs-ai/mcschemora"
-Documentation = "https://github.com/tiltedlabs-ai/mcschemora/blob/master/docs/index.md"
+Documentation = "https://tiltedlabs-ai.github.io/mcschemora/"
 Issues = "https://github.com/tiltedlabs-ai/mcschemora/issues"
 
 [tool.maturin]
@@ -44,6 +44,12 @@ dev = [
     "nbtlib>=2,<3",
     "litemapy>=0.11.0b0,<0.12",
 ]
+docs = [
+    "zensical>=0.1.2,<0.2",
+]
+
+[tool.uv.dependency-groups]
+docs = { requires-python = ">=3.12" }
 
 [tool.ruff]
 target-version = "py310"

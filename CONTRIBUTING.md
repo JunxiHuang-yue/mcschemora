@@ -36,6 +36,22 @@ type stubs, and docs consistent. To build and check distribution files, run
 
 ## Update documentation
 
+The website uses Zensical and the Markdown files in `docs/`. With uv and Python
+3.12 installed, preview it locally:
+
+```sh
+make docs-serve
+```
+
+Open `http://localhost:8000`. To build the static website in `site/`, run
+`make docs-build`. These commands install only the documentation tools and do
+not need Rust or WASM builds.
+
+The documentation workflow checks the website build on pull requests and
+deploys pushes to `main` at <https://tiltedlabs-ai.github.io/mcschemora/>.
+For the initial deployment, set the repository's **Settings → Pages → Build and
+deployment → Source** to **GitHub Actions**.
+
 The API reference is generated from Python signatures and docstrings and WASM
 declarations. Install the [WASM build prerequisites](docs/guides/getting-started-wasm.md#build),
 then run:

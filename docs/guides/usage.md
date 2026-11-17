@@ -1,8 +1,8 @@
 # Editing, conversion, and rendering
 
-Start with the [Python quickstart](../../README.md#get-started-with-python). The editing
+Start with the [Python quickstart](getting-started-python.md). The editing
 snippets below share one schematic. Full scripts and outputs are in the
-[example gallery](../../examples/README.md); method arguments and behavior are in
+[example gallery](https://github.com/tiltedlabs-ai/mcschemora/blob/main/examples/README.md); method arguments and behavior are in
 the [API reference](../reference/api.md).
 
 ## Build and edit
@@ -115,7 +115,7 @@ scene.normalize(replace={"red_wool": "white_wool"})
 The bundled Java `redstone` profile standardizes common building materials,
 including planks to oak, wool to white, leaves to oak leaves, and general
 building blocks to gray concrete. Its explicit rules are in
-[redstone.json](../../data/profiles/java/redstone.json).
+[redstone.json](https://github.com/tiltedlabs-ai/mcschemora/blob/main/data/profiles/java/redstone.json).
 Use `keep` for farms that depend on specific materials:
 
 ```python
@@ -210,7 +210,7 @@ scene.normalize("redstone")
 cost = scene.material_cost()
 ```
 
-The [primitive policy](../../data/cost/java/primitives.json) defines where recipe
+The [primitive policy](https://github.com/tiltedlabs-ai/mcschemora/blob/main/data/cost/java/primitives.json) defines where recipe
 expansion stops, including logs, minerals and ingots, natural blocks, drops, and
 plants. Blocks or items without an expansion count as one unit of themselves.
 Recipe selection is deterministic for a version and does not find the cheapest
@@ -257,7 +257,7 @@ Java 1.21.1. `essentialsx` uses matching scalar entries from the official defaul
 server sell-price table. Both are fixed across Minecraft versions; recipe
 expansion still uses the build's version. EssentialsX's legacy defaults have
 limited coverage, including no scalar prices for modern log or wool IDs.
-See the [profile sources and coverage](../../data/cost/java/values/SOURCE.md).
+See the [profile sources and coverage](https://github.com/tiltedlabs-ai/mcschemora/blob/main/data/cost/java/values/SOURCE.md).
 
 Compare builds using the same profile and check unpriced quantities alongside
 the total. These scores do not measure construction time or gathering difficulty.
@@ -348,7 +348,7 @@ print(scene.export_blueprint("build.wiki", name="Workshops", y=(0, 2)))
 
 Sprite diagrams use bundled Minecraft Wiki icons and need no visual download.
 Blueprint export writes layered-blueprint markup. Both return diagnostics for
-omitted details. See the [rendered examples](../../examples/README.md#render-and-export-a-blueprint).
+omitted details. See the [rendered examples](https://github.com/tiltedlabs-ai/mcschemora/blob/main/examples/README.md#render-and-export-a-blueprint).
 
 Import a wiki blueprint with an explicit Minecraft version:
 

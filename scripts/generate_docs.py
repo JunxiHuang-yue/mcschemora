@@ -104,7 +104,7 @@ def code(value: str) -> list[str]:
 
 
 def source_link(path: Path, line: int) -> str:
-    return f"[Source](../../{path.relative_to(ROOT).as_posix()}#L{line})"
+    return f"[Source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/{path.relative_to(ROOT).as_posix()}#L{line})"
 
 
 def python_reference() -> str:
@@ -262,7 +262,7 @@ def api_reference() -> str:
             wasm_reference(),
             "## Rust",
             "",
-            "Rust's public types and documentation comments are available in the [source](../../src/lib.rs). "
+            "Rust's public types and documentation comments are available in the [source](https://github.com/tiltedlabs-ai/mcschemora/blob/main/src/lib.rs). "
             "Build the complete Rust reference locally:",
             "",
             "```sh",

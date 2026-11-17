@@ -30,7 +30,7 @@ registry report.
 ### Recipes
 
 Recipes are stored separately from the registry snapshots in
-[the recipe tracker](https://github.com/tiltedlabs-ai/mcschemora/blob/master/src/catalog/recipes/SOURCE.md).
+[the recipe tracker](https://github.com/tiltedlabs-ai/mcschemora/blob/main/src/catalog/recipes/SOURCE.md).
 All supported versions use official server-JAR recipe data, including versions
 whose block registries come from minecraft-data. Full snapshot generation refreshes the matching tracker entries
 using the newly generated item IDs to validate recipe names.

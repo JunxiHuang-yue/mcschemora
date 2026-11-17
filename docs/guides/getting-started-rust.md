@@ -11,8 +11,8 @@ From the repository root:
 cargo run --example build
 ```
 
-The [complete example](../../examples/build.rs) loads a catalog, builds a floor,
-validates it, and writes a schematic. See the [example gallery](../../examples/README.md#build-with-rust) for output.
+The [complete example](https://github.com/tiltedlabs-ai/mcschemora/blob/main/examples/build.rs) loads a catalog, builds a floor,
+validates it, and writes a schematic. See the [example gallery](https://github.com/tiltedlabs-ai/mcschemora/blob/main/examples/README.md#build-with-rust) for output.
 
 Catalogs download on first use. The cache must be writable; see
 [catalogs and offline setup](../reference/minecraft-data.md#cache-and-offline-use).
@@ -28,7 +28,7 @@ mcschemora = { path = "/path/to/mcschemora" }
 pollster = "0.4"
 ```
 
-Copy [examples/build.rs](../../examples/build.rs) to your application's `src/main.rs`
+Copy [examples/build.rs](https://github.com/tiltedlabs-ai/mcschemora/blob/main/examples/build.rs) to your application's `src/main.rs`
 and run `cargo run`. The example writes `examples/output/floor.schem` relative to
 the working directory.
 

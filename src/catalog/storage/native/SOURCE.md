@@ -46,7 +46,7 @@ The prepared visual bundle contains:
 Catalog and visual source pins are defined in `src/catalog/source.rs` and
 `src/catalog/storage/native/visuals.rs`. Update the pins and check affected
 catalogs and renders together. Normal use downloads and caches data as needed; the
-[cache and offline guide](https://github.com/tiltedlabs-ai/mcschemora/blob/master/docs/reference/minecraft-data.md#cache-and-offline-use)
+[cache and offline guide](https://github.com/tiltedlabs-ai/mcschemora/blob/main/docs/reference/minecraft-data.md#cache-and-offline-use)
 explains preparation and offline use.
 
 ## Terms
