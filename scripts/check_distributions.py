@@ -32,13 +32,13 @@ def check_metadata(content: bytes, version: str) -> None:
     assert metadata["Name"] == PACKAGE, metadata["Name"]
     assert metadata["Version"] == version, metadata["Version"]
     assert metadata["Requires-Python"] == ">=3.10", metadata["Requires-Python"]
-    project = tomllib.loads((ROOT / "pyproject.toml").read_text())["project"]
+    project = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))["project"]
     assert metadata["License-Expression"] == project["license"], metadata["License-Expression"]
     assert metadata["Description-Content-Type"].startswith("text/markdown")
     description = metadata.get_payload(decode=True).decode("utf-8").replace("\r\n", "\n")
-    assert description.rstrip() == (ROOT / project["readme"]).read_text().rstrip(), (
-        "Package description differs from the project README"
-    )
+    assert (
+        description.rstrip() == (ROOT / project["readme"]).read_text(encoding="utf-8").rstrip()
+    ), "Package description differs from the project README"
     assert any("tiltedlabs-ai/mcschemora" in url for url in metadata.get_all("Project-URL", []))
     assert "whuang37/schemora" not in content.decode()
 
@@ -49,7 +49,7 @@ def check_wheel(path: Path, version: str) -> None:
         metadata_files = [name for name in names if name.endswith(".dist-info/METADATA")]
         assert len(metadata_files) == 1, metadata_files
         check_metadata(wheel.read(metadata_files[0]), version)
-        config = tomllib.loads((ROOT / "pyproject.toml").read_text())
+        config = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
         python_source = ROOT / config["tool"]["maturin"]["python-source"] / PACKAGE
         for name in ("__init__.py", "_core.pyi", "py.typed"):
             assert f"{PACKAGE}/{name}" in names, name
@@ -102,7 +102,7 @@ def check_source(path: Path, version: str) -> None:
         for rust in (ROOT / "src").rglob("*.rs"):
             required.add(rust.relative_to(ROOT).as_posix())
             for relative in re.findall(
-                r'include_(?:str|bytes)!\(\s*"([^"]+)"\s*\)', rust.read_text()
+                r'include_(?:str|bytes)!\(\s*"([^"]+)"\s*\)', rust.read_text(encoding="utf-8")
             ):
                 required.add((rust.parent / relative).resolve().relative_to(ROOT).as_posix())
         missing = sorted(required - names)
@@ -118,7 +118,9 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("directory", type=Path)
     args = parser.parse_args()
-    version = tomllib.loads((ROOT / "Cargo.toml").read_text())["workspace"]["package"]["version"]
+    version = tomllib.loads((ROOT / "Cargo.toml").read_text(encoding="utf-8"))["workspace"][
+        "package"
+    ]["version"]
     wheels = sorted(args.directory.glob("*.whl"))
     sources = sorted(args.directory.glob("*.tar.gz"))
     assert wheels and len(sources) == 1, "Expected wheels and one source archive"
