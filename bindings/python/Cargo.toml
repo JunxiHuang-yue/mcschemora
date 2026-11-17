@@ -2,10 +2,11 @@
 name = "mcschemora-python"
 version.workspace = true
 edition = "2024"
+rust-version.workspace = true
 publish = false
 description = "Python bindings for Minecraft schematic authoring, conversion, and rendering"
 license = "MIT"
-repository = "https://github.com/whuang37/schemora"
+repository = "https://github.com/tiltedlabs-ai/mcschemora"
 
 [lib]
 name = "_core"

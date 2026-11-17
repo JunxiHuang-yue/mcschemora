@@ -56,10 +56,6 @@ the currently bundled versions. Version arguments select individual versions;
 `--check` compares generated output without writing snapshots. See the
 [generation instructions and sources](../../src/catalog/data/SOURCE.md).
 
-## Cache and offline use
-
-Catalogs download on first use. Default native cache locations:
-
 | Platform | Directory |
 | --- | --- |
 | Linux | `$XDG_CACHE_HOME/mcschemora` when the variable is an absolute path; otherwise `~/.cache/mcschemora` |
@@ -72,8 +68,7 @@ Choose a writable cache and load the required data before going offline:
 from mcschemora import MinecraftData, Schematic, block
 
 data = MinecraftData(cache_dir="./minecraft-cache")
-data.load("1.21.1")
-data.load_visuals("1.21.1")
+data.prepare("1.21.1", visuals=True)
 
 offline = MinecraftData(cache_dir=data.cache_dir, offline=True)
 schematic = Schematic.create(version="1.21.1", data=offline)
@@ -81,9 +76,21 @@ schematic.region().set((0, 0, 0), block("stone"))
 schematic.export_png("offline.png")
 ```
 
-Skip `load_visuals` if only authoring or converting files. Offline cache misses
-and invalid cache entries fail explicitly. To load an imported file offline,
-preload its version as well.
+`prepare()` loads the version's core catalog, biomes, and bundled recipe datasets.
+Use `visuals=True` to also prepare the shared rendering catalog and visual assets.
+For conversion, use `data.prepare("1.21.1", target="1.20.4")` for each source and
+target pair. Conversion can use intermediate catalogs; preparing the endpoints
+alone does not prepare the whole route. The preparation method uses the same route
+selection as the converter and includes the intermediate biome data.
+Omit visuals for authoring, conversion, inspection, and sprite diagrams.
+
+The lower-level `load(version)` prepares only the core catalog. Optional datasets
+can still require a download. `load_visuals(version)` prepares the requested
+catalog, shared rendering catalog, and visual assets.
+
+`offline=True` prevents all Minecraft-data downloads. Missing or invalid cached
+files raise an error; no different catalog version is substituted. A first-time
+online preparation is required, and the cache directory must be kept afterward.
 
 The prepared visual bundle records its sources and limitations in a manifest;
 see the [bundle specification](../../src/catalog/storage/native/SOURCE.md).
@@ -104,5 +111,8 @@ remain documented alongside the assets:
 - [Special block models](../../data/block-models/SOURCE.md) and their [license](../../data/block-models/LICENSE).
 - [Entity models](../../data/entity-models/README.md).
 - [Wiki sprite sheets](../../data/wiki-sprites/SOURCE.md).
+- [Generated catalog snapshots](../../src/catalog/data/SOURCE.md).
+- [Generated recipes](../../src/catalog/recipes/SOURCE.md).
+- [Material valuation profiles](../../data/cost/java/values/SOURCE.md).
 
 Keep these source records when updating or redistributing assets.

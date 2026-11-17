@@ -1,5 +1,10 @@
 MCSchemora code is distributed under the MIT license in licenses/LICENSE.
 
+The distribution metadata also lists MPL-2.0 for the bundled special block
+geometry and LicenseRef-Minecraft-Assets for the original terms recorded in
+the per-source and per-file notices below. These references do not relicense
+the bundled assets or grant additional rights.
+
 This distribution also embeds third-party assets with separate terms:
 
 - Special block geometry: Mozilla Public License 2.0. See
@@ -14,12 +19,17 @@ This distribution also embeds third-party assets with separate terms:
   retained in licenses/wiki-sprites/ATTRIBUTION.json. These images are not
   relicensed under the project's MIT license.
 
-LicenseRef-Minecraft-Assets in the package metadata identifies the Minecraft
-asset collection governed by its original notices and per-file terms. It
-does not grant additional rights to Mojang or other third-party content.
+Bundled assets remain governed by their original notices and per-file terms.
+The project license does not grant additional rights to Mojang or other
+third-party content.
 Minecraft's EULA and usage guidelines are available at:
 https://www.minecraft.net/en-us/eula
 https://www.minecraft.net/en-us/usage-guidelines
 
 Runtime catalogs and visual assets are downloaded separately. Their sources
 are documented in licenses/runtime-data/SOURCE.md.
+
+Bundled catalog snapshots and recipes are generated from official Java runtimes.
+See licenses/catalogs/SOURCE.md and licenses/recipes/SOURCE.md.
+Material valuation data is adapted from ProjectE and EssentialsX; provenance
+and generation details are in licenses/material-values/SOURCE.md.

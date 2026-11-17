@@ -10,26 +10,28 @@ python -m pip install mcschemora
 
 ## Install from source
 
-With [uv](https://docs.astral.sh/uv/) and a stable [Rust toolchain](https://rustup.rs/),
-run from the repository root:
+With [uv](https://docs.astral.sh/uv/) and [Rust](https://rustup.rs/), run from the
+repository root:
 
 ```sh
-uv sync --all-packages
-uv run --all-packages python examples/build.py
+uv sync --locked
+uv run --locked python examples/build.py
 ```
 
 After changing Rust code, run `make rebuild` to refresh the native extension.
 
-## Build a wheel
+## Build release files
 
 From the repository root:
 
 ```sh
-uv run --all-packages maturin build --release --locked --manifest-path bindings/python/Cargo.toml --out dist
+make build
+make check-dist
 ```
 
-Install the generated wheel from `dist/` with `python -m pip install <wheel-path>`
-in the destination environment.
+This builds a source archive and a wheel from that archive. Install the wheel
+from `dist/` in a separate environment to check the released package.
+See the [release guide](https://github.com/tiltedlabs-ai/mcschemora/blob/master/docs/guides/releases.md).
 
 ## Usage
 
@@ -46,45 +48,58 @@ schematic.save("floor.schem")
 ## Inspect submissions
 
 ```python
-from mcschemora import inspect_schematics
+from mcschemora import Schematic, inspect_schematics
 
 resources = inspect_schematics(
-    ["farm.schem", "storage.schem"],
+    [Schematic.load("farm.schem"), Schematic.load("storage.schem")],
     initial_items=[("minecraft:stone", 64)],
-    max_bytes=16 * 1024 * 1024,
-    max_unpacked_bytes=64 * 1024 * 1024,
-    max_volume=2_000_000,
-    max_entities=1000,
 )
 print(resources["blocks"], resources["items"], resources["entities"])
 print(resources["placements"][0]["inventories"])
 ```
 
-Inspection reads Sponge v2/v3 files without loading Minecraft catalogs or using
-the network. File reading, bounded NBT decoding, traversal, resource counts, and
-aggregation all run in Rust. Python only converts the returned JSON to a dict.
-Byte limits apply per file; volume and entity limits also apply across placements.
-Malformed structures and arithmetic overflow raise `ValueError`.
+Inspection takes loaded schematics. Loading Java files can download catalogs;
+inspection itself does not make network requests. Resource counting and aggregation
+run in Rust. Use `Schematic.load(..., max_unpacked_bytes=...)` to limit expanded
+binary NBT input. Inspection does not impose a submission admission policy.
 
-Each placement reports format/data versions, dimensions, volume, block/item/entity
+Each placement reports Minecraft and data versions, dimensions, volume, block/item/entity
 counts, inventory paths, embedded identifiers, nonempty payload field names,
-extra sections, entity motion, and the largest item stack. Block counts include
-unused palette IDs with zero counts, so callers can filter every declared block.
+retained data, entity motion, and the largest item stack.
 Passengers, equipment, and nested containers are counted; nested contents are
 multiplied by their containing stack count. `initial_items` contributes only to
 the combined item totals.
 
 These are inspection facts, not an admission policy. Callers must apply their own
-forbidden IDs, payload restrictions, and stack limits. Unknown extra sections are
-reported but their contents are not included in resource totals. Counts use the
+forbidden IDs, payload restrictions, and stack limits. Read the report's
+`complete` flag and diagnostics before relying on its totals. Counts use the
 submitted IDs without version conversion; inspection does not calculate crafting
 costs or infer resources created by privileged payloads.
 
+## Downloads and offline use
+
+Catalogs and textured rendering assets download from pinned upstream revisions
+and are cached locally. Importing the package does not download Minecraft data.
+A fresh installation needs a connection before Java schematic work.
+
+```python
+from mcschemora import MinecraftData, Schematic
+
+data = MinecraftData(cache_dir="./minecraft-cache")
+data.prepare("1.21.1", visuals=True)
+
+offline = MinecraftData(cache_dir=data.cache_dir, offline=True)
+schematic = Schematic.create(version="1.21.1", data=offline)
+```
+
+Omit `visuals=True` for authoring, inspection, conversion, and sprite diagrams.
+For offline conversion, prepare the whole route with
+`data.prepare("1.21.1", target="1.20.4")`. This also fetches intermediate catalogs.
+
 ## Documentation
 
-- [Usage guide](https://github.com/whuang37/schemora/blob/master/docs/guides/usage.md) · [Examples and outputs](https://github.com/whuang37/schemora/blob/master/examples/README.md).
-- [API reference](https://github.com/whuang37/schemora/blob/master/docs/reference/api.md#python) · [Catalogs and offline preparation](https://github.com/whuang37/schemora/blob/master/docs/reference/minecraft-data.md).
-- [Release workflow](https://github.com/whuang37/schemora/blob/master/.github/workflows/python-release.yml).
+- [Usage guide](https://github.com/tiltedlabs-ai/mcschemora/blob/master/docs/guides/usage.md) · [Examples and outputs](https://github.com/tiltedlabs-ai/mcschemora/blob/master/examples/README.md).
+- [API reference](https://github.com/tiltedlabs-ai/mcschemora/blob/master/docs/reference/api.md#python) · [Catalogs and offline preparation](https://github.com/tiltedlabs-ai/mcschemora/blob/master/docs/reference/minecraft-data.md).
 
 ## Licensing
 

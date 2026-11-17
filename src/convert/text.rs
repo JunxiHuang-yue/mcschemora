@@ -419,7 +419,7 @@ fn nbt_path(input: &str) -> Result<()> {
             if end == 0 {
                 return Err("text.nbt: unterminated quoted path name".into());
             }
-        } else if !(first && rest.starts_with('{')) && !rest.starts_with('[') {
+        } else if !(rest.starts_with('[') || first && rest.starts_with('{')) {
             end = rest
                 .find(|c: char| {
                     c.is_whitespace() || matches!(c, '.' | '[' | ']' | '{' | '}' | '"' | '\'')

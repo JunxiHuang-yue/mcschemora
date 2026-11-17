@@ -7,19 +7,6 @@ resolution-markers = [
     "python_full_version < '3.11'",
 ]
 
-[manifest]
-members = [
-    "mcschemora",
-]
-
-[manifest.dependency-groups]
-dev = [
-    { name = "litemapy", specifier = ">=0.11.0b0,<0.12" },
-    { name = "maturin", specifier = ">=1.15,<2" },
-    { name = "nbtlib", specifier = ">=2,<3" },
-    { name = "ruff", specifier = ">=0.14,<1" },
-]
-
 [[package]]
 name = "litemapy"
 version = "0.11.0b0"
@@ -59,7 +46,25 @@ wheels = [
 
 [[package]]
 name = "mcschemora"
-source = { editable = "bindings/python" }
+source = { editable = "." }
+
+[package.dev-dependencies]
+dev = [
+    { name = "litemapy" },
+    { name = "maturin" },
+    { name = "nbtlib" },
+    { name = "ruff" },
+]
+
+[package.metadata]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "litemapy", specifier = ">=0.11.0b0,<0.12" },
+    { name = "maturin", specifier = ">=1.15,<2" },
+    { name = "nbtlib", specifier = ">=2,<3" },
+    { name = "ruff", specifier = ">=0.14,<1" },
+]
 
 [[package]]
 name = "nbtlib"

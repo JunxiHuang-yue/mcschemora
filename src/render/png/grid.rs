@@ -40,7 +40,7 @@ impl Lines {
         let mut dark = 0f64;
         let mut outline = 0f64;
         for &[base, dx, dy, step] in &self.0 {
-            if step < 1e-8 || step >= 0.25 {
+            if !(1e-8..0.25).contains(&step) {
                 continue;
             }
             let coordinate = base + dx * x + dy * y;

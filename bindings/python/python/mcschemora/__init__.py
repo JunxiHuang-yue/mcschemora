@@ -263,6 +263,27 @@ class MinecraftData:
         """
         return self._native.load(version)
 
+    def prepare(
+        self, version: str = "latest", *, target: str | None = None, visuals: bool = False
+    ) -> str:
+        """Prepares a Minecraft version for later offline use.
+
+        Args:
+            version: Java version, or latest for the newest supported release.
+            target: Optional explicit conversion target. Also prepares intermediate
+                catalogs and biomes used by that conversion route.
+            visuals: Whether to also prepare textured rendering assets and the
+                shared rendering catalog. Sprite diagrams do not need these assets.
+
+        Returns:
+            The resolved Java version. Downloads use the configured cache directory.
+
+        Raises:
+            ValueError: If required data is unavailable, invalid, or missing while
+                offline. A fresh cache requires a network connection.
+        """
+        return self._native.prepare(version, visuals, target)
+
     def dataset(self, version: str, kind: str) -> JsonValue:
         """Loads and caches a parsed catalog dataset for a Java version.
 
@@ -286,6 +307,8 @@ class MinecraftData:
 
     def load_visuals(self, version: str = "latest") -> Path:
         """Prepares rendering assets and returns their cache directory.
+
+        Loads the requested and shared rendering catalogs for offline rendering.
 
         Args:
             version: Java version, or latest. All versions use the 1.21.6 visual bundle.

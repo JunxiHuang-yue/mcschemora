@@ -96,16 +96,29 @@ impl PyMinecraftData {
         py.detach(|| pollster::block_on(self.data.load(version)).map(|r| r.version.clone()))
             .map_err(error)
     }
+    #[pyo3(signature = (version, visuals, target=None))]
+    fn prepare(
+        &self,
+        py: Python<'_>,
+        version: &str,
+        visuals: bool,
+        target: Option<&str>,
+    ) -> PyResult<String> {
+        py.detach(|| -> mcschemora::Result<String> {
+            let registry = pollster::block_on(self.data.prepare(version, target))?;
+            if visuals {
+                self.data.load_visuals(&registry.version)?;
+            }
+            Ok(registry.version.clone())
+        })
+        .map_err(error)
+    }
     fn dataset(&self, py: Python<'_>, version: &str, kind: &str) -> PyResult<String> {
         py.detach(|| pollster::block_on(self.data.dataset(version, kind)).map(|v| v.to_string()))
             .map_err(error)
     }
     fn load_visuals(&self, py: Python<'_>, version: &str) -> PyResult<std::path::PathBuf> {
-        py.detach(|| {
-            pollster::block_on(self.data.initialize())?;
-            self.data.load_visuals(version)
-        })
-        .map_err(error)
+        py.detach(|| self.data.load_visuals(version)).map_err(error)
     }
 }
 

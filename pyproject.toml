@@ -1,5 +1,41 @@
-[tool.uv.workspace]
-members = ["bindings/python"]
+[build-system]
+requires = ["maturin>=1.15,<2"]
+build-backend = "maturin"
+
+[project]
+name = "mcschemora"
+dynamic = ["version"]
+authors = [{ name = "MCSchemora contributors" }]
+description = "Minecraft schematic authoring, editing, conversion, and rendering"
+requires-python = ">=3.10"
+readme = "bindings/python/README.md"
+license = "MIT AND MPL-2.0 AND LicenseRef-Minecraft-Assets"
+license-files = ["LICENSE", "bindings/python/NOTICE", "data/block-models/LICENSE"]
+keywords = ["minecraft", "schematic", "litematic", "nbt", "rendering"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Rust",
+    "Typing :: Typed",
+]
+
+[project.urls]
+Repository = "https://github.com/tiltedlabs-ai/mcschemora"
+Documentation = "https://github.com/tiltedlabs-ai/mcschemora/blob/master/docs/index.md"
+Issues = "https://github.com/tiltedlabs-ai/mcschemora/issues"
+
+[tool.maturin]
+manifest-path = "bindings/python/Cargo.toml"
+locked = true
+python-source = "bindings/python/python"
+module-name = "mcschemora._core"
+include = [
+    { path = "licenses/**/*", from = "out-dir", to = "mcschemora/" },
+]
+exclude = ["**/__pycache__/**", "**/*.pyc", "bindings/python/python/mcschemora/licenses/**/*"]
 
 [dependency-groups]
 dev = [

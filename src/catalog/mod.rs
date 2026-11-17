@@ -132,6 +132,23 @@ impl MinecraftData {
             .clone())
     }
 
+    /// Prepares a version's catalogs, biomes, and bundled recipes for offline use.
+    ///
+    /// An optional conversion target also prepares all intermediate catalogs and
+    /// biomes required by the converter. Native rendering also needs load_visuals().
+    pub async fn prepare(&self, requested: &str, target: Option<&str>) -> Result<Arc<Registry>> {
+        let registry = self.load(requested).await?;
+        self.dataset(&registry.version, "biomes").await?;
+        self.dataset(&registry.version, "recipes").await?;
+        if let Some(target) = target {
+            for version in crate::convert::route(registry.data_version, target)? {
+                let next = self.load(version).await?;
+                self.load_biomes(&next).await?;
+            }
+        }
+        Ok(registry)
+    }
+
     /// Returns an already loaded registry; this method does not download catalogs.
     pub fn registry(&self, requested: &str) -> Result<Arc<Registry>> {
         let version = self.metadata()?.resolve(requested)?;
@@ -244,10 +261,12 @@ impl MinecraftData {
 
     /// Prepares and returns the shared Java 1.21.6 visual bundle directory.
     ///
-    /// Catalog metadata must be loaded. Other versions use the same bundle with a warning.
+    /// Loads the requested and rendering catalogs as well as the visual assets.
+    /// Other versions use the same bundle with a warning.
     #[cfg(not(target_arch = "wasm32"))]
     pub fn load_visuals(&self, requested: &str) -> Result<PathBuf> {
-        let version = self.metadata()?.resolve(requested)?;
+        let version = pollster::block_on(self.load(requested))?.version.clone();
+        pollster::block_on(self.load(VISUAL_VERSION))?;
         if version != VISUAL_VERSION {
             eprintln!(
                 "warning: visuals for Java {version} are not supported; falling back to Java {VISUAL_VERSION} textures and models"
@@ -259,7 +278,6 @@ impl MinecraftData {
     /// Loads and shares the native geometry assets for the shared visual bundle.
     #[cfg(not(target_arch = "wasm32"))]
     pub fn geometry_assets(&self, requested: &str) -> Result<Arc<crate::render::GeometryAssets>> {
-        pollster::block_on(self.load(VISUAL_VERSION))?;
         let path = self.load_visuals(requested)?;
         let mut assets = self
             .geometry

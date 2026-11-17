@@ -1,6 +1,7 @@
 # Getting started with Rust
 
-Use a stable Rust toolchain. The Rust example runs without Python.
+Use Rust 1.88 or later. The checkout selects its tested compiler through
+`rust-toolchain.toml`. The Rust example runs without Python.
 
 ## Run from this checkout
 
@@ -29,7 +30,6 @@ pollster = "0.4"
 
 Copy [examples/build.rs](../../examples/build.rs) to your application's `src/main.rs`
 and run `cargo run`.
-→ encoding flow, including error handling and filesystem I/O.
 
 ## Render a PNG
 

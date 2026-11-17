@@ -690,7 +690,7 @@ fn block_entity_id(data: &mut Compound, id: &str) -> Result<()> {
         } else {
             kind
         };
-        data.insert("id".into(), V::String(format!("minecraft:{}", kind)));
+        data.insert("id".into(), V::String(format!("minecraft:{kind}")));
     }
     Ok(())
 }

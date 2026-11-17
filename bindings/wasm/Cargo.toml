@@ -2,7 +2,11 @@
 name = "mcschemora-wasm"
 version.workspace = true
 edition = "2024"
+rust-version.workspace = true
 publish = false
+description = "Browser bindings for Minecraft schematic authoring, editing, and conversion"
+license = "MIT"
+repository = "https://github.com/tiltedlabs-ai/mcschemora"
 
 [lib]
 crate-type = ["cdylib", "rlib"]

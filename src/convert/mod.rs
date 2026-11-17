@@ -206,6 +206,45 @@ fn releases() -> Result<&'static Vec<Release>> {
         .map_err(Clone::clone)
 }
 
+pub(crate) fn route(source: i32, version: &str) -> Result<Vec<&'static str>> {
+    let manifest = releases()?;
+    let target = manifest
+        .iter()
+        .find(|release| release.version == version)
+        .ok_or_else(|| {
+            format!("Minecraft {version} is outside the pinned stable conversion manifest")
+        })?;
+    if !manifest
+        .iter()
+        .any(|release| release.data_version == source)
+    {
+        return Err(format!(
+            "Source data version {source} is outside the pinned stable conversion manifest"
+        ));
+    }
+    let forward = source < target.data_version;
+    let mut destinations = Vec::new();
+    for boundary in [
+        3105, 3218, 3337, 3463, 3578, 3698, 3837, 3953, 4059, 4173, 4290, 4420, 4531, 4648, 4763,
+        4903, 4996,
+    ] {
+        if source.min(target.data_version) < boundary && boundary <= source.max(target.data_version)
+        {
+            let split = manifest.partition_point(|release| release.data_version < boundary);
+            destinations.push(
+                manifest[if forward { split } else { split - 1 }]
+                    .version
+                    .as_str(),
+            );
+        }
+    }
+    if !forward {
+        destinations.reverse();
+    }
+    destinations.push(target.version.as_str());
+    Ok(destinations)
+}
+
 pub(crate) async fn schematic<'a>(
     schematic: &'a Schematic,
     version: Option<&str>,
@@ -252,25 +291,7 @@ pub(crate) async fn schematic<'a>(
     let mut losses = Vec::new();
     let mut current = schematic.data_version;
     let mut source_registry = source_release.load(&schematic.data).await?;
-    let forward = current < target.data_version;
-    let mut destinations = Vec::new();
-    for boundary in [
-        3105, 3218, 3337, 3463, 3578, 3698, 3837, 3953, 4059, 4173, 4290, 4420, 4531, 4648, 4763,
-        4903, 4996,
-    ] {
-        if current.min(target.data_version) < boundary
-            && boundary <= current.max(target.data_version)
-        {
-            let split = manifest.partition_point(|release| release.data_version < boundary);
-            let next = &manifest[if forward { split } else { split - 1 }];
-            destinations.push(next.version.as_str());
-        }
-    }
-    if !forward {
-        destinations.reverse();
-    }
-    destinations.push(version);
-    for destination in destinations {
+    for destination in route(current, version)? {
         let release = manifest
             .iter()
             .find(|r| r.version == destination)

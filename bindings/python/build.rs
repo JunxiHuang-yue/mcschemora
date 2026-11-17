@@ -23,6 +23,15 @@ fn main() -> io::Result<()> {
             "src/catalog/storage/native/SOURCE.md",
             "licenses/runtime-data/SOURCE.md",
         ),
+        ("src/catalog/data/SOURCE.md", "licenses/catalogs/SOURCE.md"),
+        (
+            "src/catalog/recipes/SOURCE.md",
+            "licenses/recipes/SOURCE.md",
+        ),
+        (
+            "data/cost/java/values/SOURCE.md",
+            "licenses/material-values/SOURCE.md",
+        ),
     ] {
         let source = root.join(source);
         let target = output.join(target);

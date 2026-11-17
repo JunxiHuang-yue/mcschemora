@@ -163,7 +163,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("versions", nargs="*")
     parser.add_argument(
-        "--cache-dir", type=Path, default=Path(tempfile.gettempdir()) / "schemora-recipe-sources"
+        "--cache-dir", type=Path, default=Path(tempfile.gettempdir()) / "mcschemora-recipe-sources"
     )
     parser.add_argument("--java", default="java")
     parser.add_argument("--javac", default="javac")

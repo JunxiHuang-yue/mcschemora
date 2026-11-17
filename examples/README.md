@@ -1,6 +1,6 @@
 # Examples
 
-Run from the repository root. Python examples need `uv sync --all-packages`;
+Run from the repository root. Python examples need `uv sync --locked`;
 the Rust example needs a stable Rust toolchain. Examples pin Java 1.21.1.
 Catalogs download on first use; PNG/GLB also download visual assets.
 Generated files go in the ignored `examples/output/` directory.
@@ -19,7 +19,7 @@ Generated files go in the ignored `examples/output/` directory.
 ## Build and inspect
 
 ```sh
-uv run --all-packages python examples/build.py
+uv run --locked python examples/build.py
 ```
 
 The workshop has a stone-brick floor, four log pillars, a slab roof, a bed,
@@ -62,7 +62,7 @@ dependency setup and examples of loading and rendering.
 ## Build the banner
 
 ```sh
-uv run --all-packages python examples/banner.py
+uv run --locked python examples/banner.py
 ```
 
 <p align="center">
@@ -72,7 +72,7 @@ uv run --all-packages python examples/banner.py
 ## Build the gyroid rainbow reef
 
 ```sh
-uv run --all-packages python examples/reef.py
+uv run --locked python examples/reef.py
 ```
 
 
@@ -83,7 +83,7 @@ uv run --all-packages python examples/reef.py
 ## Build the jade mountain scroll
 
 ```sh
-uv run --all-packages python examples/jade_scroll.py
+uv run --locked python examples/jade_scroll.py
 ```
 
 <p align="center">
@@ -93,7 +93,7 @@ uv run --all-packages python examples/jade_scroll.py
 ## Copy, rotate, and restyle
 
 ```sh
-uv run --all-packages python examples/edit.py
+uv run --locked python examples/edit.py
 ```
 
 ```text
@@ -112,7 +112,7 @@ block states, then its log pillars are replaced with birch logs.
 Run the build example first:
 
 ```sh
-uv run --all-packages python examples/convert.py examples/output/workshop.schem examples/output/workshop.litematic
+uv run --locked python examples/convert.py examples/output/workshop.schem examples/output/workshop.litematic
 ```
 
 ```text
@@ -129,7 +129,7 @@ accepts reported omissions. See the [conversion workflow](../docs/guides/usage.m
 ## Render and export a blueprint
 
 ```sh
-uv run --all-packages python examples/render.py
+uv run --locked python examples/render.py
 ```
 
 Textured cutaway, with the roof excluded from this preview:

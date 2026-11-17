@@ -21,7 +21,7 @@ The importer reads Mojang's version manifest, verifies downloaded version metada
 and server JAR SHA1 hashes, and extracts default vanilla recipe and item-tag JSON
 from the runtime JAR. It unwraps bundled server JARs when present. Optional
 experimental datapacks are excluded. Downloads are cached in the system temporary
-directory under `schemora-recipe-sources`; `--cache-dir` selects another directory.
+directory under `mcschemora-recipe-sources`; `--cache-dir` selects another directory.
 Remove the cache's `manifest.json` to refresh the version list.
 
 Item names are validated against the matching official registry snapshot where

@@ -6,7 +6,6 @@
 
 Author, edit, convert, and render Minecraft schematics in Rust with Python and WASM bindings.
 Supports `.schem`, `.litematic`, `.nbt`, `.snbt`, `.mcstructure`, and wiki blueprints.
-Ready to go for agent-native authoring.
 
 [Reproduce the banner build](examples/README.md#build-the-banner).
 
@@ -35,14 +34,23 @@ Gyroid reefs [code](examples/reef.py)
 
 ### Python
 
-With Python 3.10+, [uv](https://docs.astral.sh/uv/), and a stable
-[Rust toolchain](https://rustup.rs/), run from this checkout:
+The `0.1.0` release is being prepared. After publication, install with CPython 3.10+:
 
 ```sh
-uv sync --all-packages
-uv run --all-packages python examples/build.py
-uv run --all-packages python examples/render.py
+python -m pip install mcschemora
 ```
+
+Matching wheels include the compiled extension. For development, install
+[uv](https://docs.astral.sh/uv/) and [Rust](https://rustup.rs/), then run from the checkout:
+
+```sh
+uv sync --locked
+uv run --locked python examples/build.py
+uv run --locked python examples/render.py
+```
+
+Catalogs download on first use; textured rendering also downloads visual assets.
+See [data preparation and offline use](docs/reference/minecraft-data.md#cache-and-offline-use).
 
 Example schematic output:
 
@@ -70,6 +78,7 @@ cargo run --example build
 - [Usage guide](docs/guides/usage.md) · [Examples and output gallery](examples/README.md).
 - [API reference](docs/reference/api.md) · [Catalogs and assets](docs/reference/minecraft-data.md).
 - [Documentation index and maintenance](docs/index.md).
+- [Contributing](CONTRIBUTING.md) · [Release preparation](docs/guides/releases.md) · [Changelog](CHANGELOG.md).
 
 ## License
 

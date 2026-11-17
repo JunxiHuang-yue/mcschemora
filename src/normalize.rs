@@ -152,9 +152,9 @@ impl Schematic {
             .collect();
         replacements.retain(|_, target| !sources.contains(&target.id));
         if let Some(fallback) = fallback.filter(|block| {
-            !replacements
+            replacements
                 .get(&block.id)
-                .is_some_and(|target| target.id != block.id)
+                .is_none_or(|target| target.id == block.id)
         }) {
             let mut targets: BTreeSet<_> = replacements
                 .values()

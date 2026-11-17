@@ -310,7 +310,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("versions", nargs="*")
     parser.add_argument(
-        "--cache-dir", type=Path, default=Path(tempfile.gettempdir()) / "schemora-recipe-sources"
+        "--cache-dir", type=Path, default=Path(tempfile.gettempdir()) / "mcschemora-recipe-sources"
     )
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
