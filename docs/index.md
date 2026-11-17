@@ -15,7 +15,7 @@ Minecraft schematic libraries have traditionally been extremely fragmented, wher
 
 MCSchemora is designed to address these issues by abstracting away all the engineering, cataloging, and authoring finnickiness to allow developers and agents to easily examine, edit, and deploy Minecraft schematics. By keeping the core interface and functionality small and Pythonic, MCSchemora can better support different agentic harnesses that don't need to learn specialized conventions to use the system while also easily integrating with existing packages that might be more familiar.
 
-## Give your assistant the documentation
+## MCSchemora for agents
 
 The full documentation is available as Markdown in [llms.txt](llms.txt), generated
 from the same sources as this website on every build. It includes the quickstarts,
