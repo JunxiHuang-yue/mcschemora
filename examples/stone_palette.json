@@ -1,0 +1,6 @@
+{
+  "edition": "java",
+  "replacements": [
+    {"from": ["minecraft:stone_bricks"], "to": "minecraft:stone"}
+  ]
+}

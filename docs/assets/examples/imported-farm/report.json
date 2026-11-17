@@ -1,0 +1,656 @@
+{
+  "inspection": {
+    "complete": true,
+    "diagnostics": [],
+    "edition": "java",
+    "version": "1.21.4",
+    "data_version": 4189,
+    "regions": {
+      "AChromoss v0.4": [
+        15,
+        14,
+        15
+      ]
+    },
+    "volume": 3150,
+    "blocks": {
+      "minecraft:air": 1663,
+      "minecraft:chest": 18,
+      "minecraft:cobblestone": 2,
+      "minecraft:comparator": 4,
+      "minecraft:composter": 44,
+      "minecraft:deepslate_tiles": 4,
+      "minecraft:dispenser": 8,
+      "minecraft:dropper": 12,
+      "minecraft:glass": 48,
+      "minecraft:green_stained_glass": 58,
+      "minecraft:green_terracotta": 24,
+      "minecraft:honey_block": 12,
+      "minecraft:hopper": 157,
+      "minecraft:iron_door": 8,
+      "minecraft:iron_trapdoor": 8,
+      "minecraft:jack_o_lantern": 75,
+      "minecraft:lantern": 1,
+      "minecraft:lava": 100,
+      "minecraft:lever": 1,
+      "minecraft:light_gray_stained_glass": 31,
+      "minecraft:lime_stained_glass": 54,
+      "minecraft:mangrove_wall_sign": 1,
+      "minecraft:moss_block": 162,
+      "minecraft:moss_carpet": 1,
+      "minecraft:note_block": 12,
+      "minecraft:observer": 78,
+      "minecraft:orange_stained_glass": 121,
+      "minecraft:pale_moss_block": 40,
+      "minecraft:pale_moss_carpet": 5,
+      "minecraft:powder_snow": 1,
+      "minecraft:red_stained_glass": 31,
+      "minecraft:redstone_torch": 4,
+      "minecraft:redstone_wire": 38,
+      "minecraft:repeater": 32,
+      "minecraft:scaffolding": 56,
+      "minecraft:short_grass": 3,
+      "minecraft:shroomlight": 4,
+      "minecraft:slime_block": 48,
+      "minecraft:sticky_piston": 20,
+      "minecraft:stone": 86,
+      "minecraft:tall_grass": 2,
+      "minecraft:water": 4,
+      "minecraft:yellow_stained_glass": 69
+    },
+    "items": {
+      "minecraft:azalea": 1,
+      "minecraft:bone_meal": 3632,
+      "minecraft:egg": 1,
+      "minecraft:lava_bucket": 4,
+      "minecraft:moss_block": 962,
+      "minecraft:moss_carpet": 1,
+      "minecraft:pale_moss_block": 905,
+      "minecraft:pale_moss_carpet": 5
+    },
+    "entities": {
+      "minecraft:item_frame": 1
+    },
+    "inventories": [
+      {
+        "path": "AChromoss v0.4/block_entities/[-10, -5, 11]/Items/0",
+        "item": "minecraft:lava_bucket",
+        "count": 1
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-10, -5, 3]/Items/0",
+        "item": "minecraft:lava_bucket",
+        "count": 1
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-10, -7, 10]/Items/0",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-10, -7, 10]/Items/1",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-10, -7, 10]/Items/2",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-10, -7, 10]/Items/3",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-10, -7, 10]/Items/4",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-10, -7, 10]/Items/5",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-10, -7, 10]/Items/6",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-10, -7, 10]/Items/7",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-10, -7, 10]/Items/8",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-10, -7, 4]/Items/0",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-10, -7, 4]/Items/1",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-10, -7, 4]/Items/2",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-10, -7, 4]/Items/3",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-10, -7, 4]/Items/4",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-10, -7, 4]/Items/5",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-10, -7, 4]/Items/6",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-10, -7, 4]/Items/7",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-10, -7, 4]/Items/8",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-12, -7, 6]/Items/0",
+        "item": "minecraft:pale_moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-12, -7, 6]/Items/1",
+        "item": "minecraft:pale_moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-12, -7, 6]/Items/2",
+        "item": "minecraft:pale_moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-12, -7, 6]/Items/3",
+        "item": "minecraft:pale_moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-12, -7, 6]/Items/4",
+        "item": "minecraft:pale_moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-12, -7, 6]/Items/5",
+        "item": "minecraft:pale_moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-12, -7, 6]/Items/6",
+        "item": "minecraft:pale_moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-12, -7, 6]/Items/7",
+        "item": "minecraft:pale_moss_block",
+        "count": 17
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-12, -7, 6]/Items/8",
+        "item": "minecraft:pale_moss_carpet",
+        "count": 1
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-12, -7, 9]/Items/0",
+        "item": "minecraft:moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-12, -7, 9]/Items/1",
+        "item": "minecraft:moss_carpet",
+        "count": 1
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-12, -7, 9]/Items/2",
+        "item": "minecraft:moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-12, -7, 9]/Items/3",
+        "item": "minecraft:moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-12, -7, 9]/Items/4",
+        "item": "minecraft:moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-12, -7, 9]/Items/5",
+        "item": "minecraft:moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-12, -7, 9]/Items/6",
+        "item": "minecraft:moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-12, -7, 9]/Items/7",
+        "item": "minecraft:azalea",
+        "count": 1
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-12, -7, 9]/Items/8",
+        "item": "minecraft:moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-12, -7, 9]/Items/9",
+        "item": "minecraft:moss_block",
+        "count": 22
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-2, -7, 5]/Items/0",
+        "item": "minecraft:moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-2, -7, 5]/Items/1",
+        "item": "minecraft:moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-2, -7, 5]/Items/2",
+        "item": "minecraft:moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-2, -7, 5]/Items/3",
+        "item": "minecraft:moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-2, -7, 5]/Items/4",
+        "item": "minecraft:moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-2, -7, 5]/Items/5",
+        "item": "minecraft:moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-2, -7, 5]/Items/6",
+        "item": "minecraft:moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-2, -7, 5]/Items/7",
+        "item": "minecraft:pale_moss_block",
+        "count": 1
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-2, -7, 5]/Items/8",
+        "item": "minecraft:moss_block",
+        "count": 44
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-2, -7, 8]/Items/0",
+        "item": "minecraft:pale_moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-2, -7, 8]/Items/1",
+        "item": "minecraft:pale_moss_carpet",
+        "count": 4
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-2, -7, 8]/Items/2",
+        "item": "minecraft:pale_moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-2, -7, 8]/Items/3",
+        "item": "minecraft:pale_moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-2, -7, 8]/Items/4",
+        "item": "minecraft:pale_moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-2, -7, 8]/Items/5",
+        "item": "minecraft:pale_moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-2, -7, 8]/Items/6",
+        "item": "minecraft:pale_moss_block",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-2, -7, 8]/Items/7",
+        "item": "minecraft:pale_moss_block",
+        "count": 55
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-4, -5, 11]/Items/0",
+        "item": "minecraft:lava_bucket",
+        "count": 1
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-4, -5, 3]/Items/0",
+        "item": "minecraft:lava_bucket",
+        "count": 1
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-4, -7, 10]/Items/0",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-4, -7, 10]/Items/1",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-4, -7, 10]/Items/2",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-4, -7, 10]/Items/3",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-4, -7, 10]/Items/4",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-4, -7, 10]/Items/5",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-4, -7, 10]/Items/6",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-4, -7, 10]/Items/7",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-4, -7, 10]/Items/8",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-4, -7, 4]/Items/0",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-4, -7, 4]/Items/1",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-4, -7, 4]/Items/2",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-4, -7, 4]/Items/3",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-4, -7, 4]/Items/4",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-4, -7, 4]/Items/5",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-4, -7, 4]/Items/6",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-4, -7, 4]/Items/7",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-4, -7, 4]/Items/8",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-5, -7, 10]/Items/0",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-5, -7, 10]/Items/1",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-5, -7, 10]/Items/2",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-5, -7, 10]/Items/3",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-5, -7, 10]/Items/4",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-5, -7, 4]/Items/0",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-5, -7, 4]/Items/1",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-5, -7, 4]/Items/2",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-5, -7, 4]/Items/3",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-5, -7, 4]/Items/4",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-6, -6, 10]/Items/0",
+        "item": "minecraft:bone_meal",
+        "count": 2
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-6, -6, 4]/Items/0",
+        "item": "minecraft:bone_meal",
+        "count": 2
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-7, -11, 6]/Items/0",
+        "item": "minecraft:bone_meal",
+        "count": 41
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-8, -6, 10]/Items/0",
+        "item": "minecraft:bone_meal",
+        "count": 1
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-8, -6, 4]/Items/0",
+        "item": "minecraft:bone_meal",
+        "count": 1
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-8, -6, 9]/Items/0",
+        "item": "minecraft:bone_meal",
+        "count": 1
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-9, -7, 10]/Items/0",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-9, -7, 10]/Items/1",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-9, -7, 10]/Items/2",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-9, -7, 10]/Items/3",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-9, -7, 10]/Items/4",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-9, -7, 4]/Items/0",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-9, -7, 4]/Items/1",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-9, -7, 4]/Items/2",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-9, -7, 4]/Items/3",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/block_entities/[-9, -7, 4]/Items/4",
+        "item": "minecraft:bone_meal",
+        "count": 64
+      },
+      {
+        "path": "AChromoss v0.4/entities/1/Item",
+        "item": "minecraft:egg",
+        "count": 1
+      }
+    ],
+    "identifiers": [
+      "minecraft:azalea",
+      "minecraft:bone_meal",
+      "minecraft:chest",
+      "minecraft:comparator",
+      "minecraft:dispenser",
+      "minecraft:dropper",
+      "minecraft:egg",
+      "minecraft:hopper",
+      "minecraft:item_frame",
+      "minecraft:lava_bucket",
+      "minecraft:moss_block",
+      "minecraft:moss_carpet",
+      "minecraft:pale_moss_block",
+      "minecraft:pale_moss_carpet",
+      "minecraft:sign"
+    ],
+    "payload_fields": [
+      "air",
+      "back_text",
+      "color",
+      "components",
+      "count",
+      "custom_model_data",
+      "custom_name",
+      "facing",
+      "fire",
+      "floats",
+      "front_text",
+      "id",
+      "invisible",
+      "is_waxed",
+      "item",
+      "itemdropchance",
+      "items",
+      "messages",
+      "motion",
+      "rotation",
+      "slot",
+      "tags",
+      "tilex",
+      "tiley",
+      "tilez",
+      "uuid"
+    ],
+    "retained_data": false,
+    "entities_outside_bounds": false,
+    "entity_count": 1,
+    "moving_entities": false,
+    "max_stack_count": 64
+  },
+  "import_diagnostics": [],
+  "validation": {
+    "errors": [],
+    "warnings": [],
+    "unknown": [
+      "AChromoss v0.4 [-7, -2, 6]: sign.support: needs surrounding blocks or support data"
+    ]
+  },
+  "render_diagnostics": [
+    "minecraft:short_grass at [1, 7, 12] in region \"AChromoss v0.4\": Tint indices are preserved; tint colors are not evaluated",
+    "minecraft:tall_grass[half=lower] at [12, 7, 13] in region \"AChromoss v0.4\": Tint indices are preserved; tint colors are not evaluated",
+    "minecraft:tall_grass[half=upper] at [12, 8, 13] in region \"AChromoss v0.4\": Tint indices are preserved; tint colors are not evaluated",
+    "minecraft:item_frame at [8, 1, 4] in region \"AChromoss v0.4\": Only visible adult, unsaddled entities are supported"
+  ]
+}

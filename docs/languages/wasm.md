@@ -1,8 +1,8 @@
-# Getting started with browser WASM
+# Browser WASM
 
-Use the WASM bindings to build, validate, and convert schematics in a browser.
-Catalogs are fetched on demand and kept in memory for each `MinecraftData`
-instance. The bindings do not expose the native filesystem cache or PNG/GLB rendering.
+The WASM bindings let a browser application build, validate, and convert schematics.
+Each `MinecraftData` instance fetches catalogs on demand and keeps them in memory.
+The native filesystem cache and PNG/GLB rendering are unavailable in the browser.
 
 ## Build
 
@@ -17,7 +17,7 @@ npm --prefix bindings/wasm run build
 The build writes JavaScript, WebAssembly, and TypeScript declarations to
 `bindings/wasm/pkg/`.
 
-## Create and export a schematic
+## Create a schematic
 
 Import the generated module from your browser application. Adjust the import
 path to match where you serve `bindings/wasm/pkg/`:
@@ -50,7 +50,7 @@ minecraft:stone_bricks
 true
 ```
 
-## Import a file
+## File import
 
 Pass file bytes and a codec name to `fromBytes()`. For ordinary file import,
 pass `undefined` as the options argument:
@@ -64,7 +64,8 @@ try {
 }
 ```
 
-Use a live `MinecraftData` instance and an `ArrayBuffer` from your application's
-file input. Blueprint imports need an explicit version in the options object.
-See the [API reference](../reference/api.md#browser-wasm) for methods and arguments,
-and the [conversion guide](usage.md#inspect-and-convert) for export reports.
+Here the `ArrayBuffer` comes from your application's file input, and the
+`MinecraftData` instance must stay live while loading. For blueprint imports,
+provide an explicit version in the options object. The
+[API reference](../reference/wasm.md) lists methods and arguments, and the
+[conversion guide](../sdk/conversion.md#export-reports) explains export reports.

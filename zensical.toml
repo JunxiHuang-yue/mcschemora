@@ -1,0 +1,90 @@
+[project]
+site_name = "MCSchemora"
+site_description = "Build, edit, convert, and render Minecraft schematics with Python, Rust, and browser WASM."
+site_url = "https://tiltedlabs-ai.github.io/mcschemora/"
+repo_url = "https://github.com/tiltedlabs-ai/mcschemora"
+repo_name = "tiltedlabs-ai/mcschemora"
+extra_javascript = ["assets/toc.js"]
+nav = [
+    { "Introduction" = "index.md" },
+    { "Get started" = [
+        { "Developer quickstart" = "quickstart/developers.md" },
+        { "Agent quickstart" = "quickstart/agents.md" },
+    ] },
+    { "MCSchemora" = [
+        { "Schematics" = "sdk/schematics.md" },
+        { "Editing" = "sdk/editing.md" },
+        { "Palettes" = "sdk/palettes.md" },
+        { "Inspection" = "sdk/inspection.md" },
+        { "Costs" = "sdk/materials-and-costs.md" },
+        { "Conversion" = "sdk/conversion.md" },
+        { "Rendering" = "sdk/rendering.md" },
+        { "Validation" = "sdk/validation.md" },
+        { "Minecraft data" = "sdk/minecraft-data.md" },
+    ] },
+    { "Examples" = [
+        { "Overview" = "examples/index.md" },
+        { "Importing a farm" = "examples/import-farm.md" },
+        { "Eiffel Tower" = "examples/eiffel-tower.md" },
+        { "Litematica to WorldEdit" = "examples/litematic-to-schem.md" },
+        { "Litematica to structure NBT" = "examples/litematic-to-nbt.md" },
+        { "Export a material list" = "examples/material-list.md" },
+        { "Calculate raw ingredients" = "examples/raw-materials.md" },
+        { "Compare palette costs" = "examples/compare-palettes.md" },
+        { "Restyle a workshop" = "examples/restyle-workshop.md" },
+        { "Replace unwanted blocks" = "examples/replace-blocks.md" },
+        { "Save a rotated build" = "examples/rotate-schematic.md" },
+        { "Layer-by-layer diagrams" = "examples/layer-diagrams.md" },
+        { "Batch conversion" = "examples/batch-conversion.md" },
+        { "Island banner" = "examples/banner.md" },
+        { "Rainbow reef" = "examples/reef.md" },
+        { "Jade mountain scroll" = "examples/jade-scroll.md" },
+    ] },
+    { "Reference" = [
+        { "Python API" = "reference/python.md" },
+        { "Browser WASM API" = "reference/wasm.md" },
+        { "Formats" = "reference/formats.md" },
+        { "Data sources" = "reference/sources.md" },
+    ] },
+    { "Other languages" = [
+        { "Rust" = "languages/rust.md" },
+        { "Browser WASM" = "languages/wasm.md" },
+    ] },
+    { "Contributing" = "contributing.md" },
+]
+
+[project.theme]
+logo = "assets/crafter.png"
+font = false
+features = ["navigation.top", "content.code.copy", "toc.follow"]
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "teal"
+accent = "teal"
+toggle = { icon = "material/brightness-7", name = "Switch to dark mode" }
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "teal"
+accent = "teal"
+toggle = { icon = "material/brightness-4", name = "Switch to light mode" }
+
+[project.markdown_extensions.attr_list]
+
+[project.markdown_extensions.md_in_html]
+
+[project.markdown_extensions.tables]
+
+[project.markdown_extensions.toc]
+permalink = true
+
+[project.markdown_extensions."pymdownx.highlight"]
+
+[project.markdown_extensions."pymdownx.superfences"]
+
+[project.markdown_extensions."pymdownx.snippets"]
+base_path = ["."]
+check_paths = true

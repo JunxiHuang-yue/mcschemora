@@ -1,0 +1,9 @@
+{
+  "edition": "java",
+  "keep": ["minecraft:chest", "minecraft:furnace", "minecraft:red_bed"],
+  "replacements": [
+    {"from": ["minecraft:oak_log"], "to": "minecraft:birch_log"},
+    {"from": ["minecraft:oak_slab"], "to": "minecraft:birch_slab"},
+    {"from": ["minecraft:stone_bricks"], "to": "minecraft:deepslate_bricks"}
+  ]
+}

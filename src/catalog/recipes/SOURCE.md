@@ -51,8 +51,8 @@ version datasets in `MinecraftData`. There is no runtime server download.
 Run these commands from the repository root:
 
 ```sh
-python scripts/import_recipes.py
-python scripts/import_recipes.py --check
+uv run --locked scripts/import_recipes.py
+uv run --locked scripts/import_recipes.py --check
 ```
 
 The importer refreshes all supported versions by default. Version arguments

@@ -1,86 +1,72 @@
 # MCSchemora
 
-Build, edit, convert, and render Minecraft schematics. MCSchemora has a Rust core,
-Python bindings, and browser WASM bindings.
+Create, edit, convert, and render Minecraft schematics with Python, Rust, or
+browser WASM.
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/tiltedlabs-ai/mcschemora/main/docs/assets/banner.png" alt="Island banner built and rendered with MCSchemora">
-</p>
+![Floating islands built and rendered with MCSchemora](https://raw.githubusercontent.com/tiltedlabs-ai/mcschemora/main/docs/assets/examples/banner.png)
 
-Author, edit, convert, and render Minecraft schematics in Rust with Python and WASM bindings.
-Supports `.schem`, `.litematic`, `.nbt`, `.snbt`, `.mcstructure`, and wiki blueprints.
+[Documentation](https://tiltedlabs-ai.github.io/mcschemora/) ·
+[Developer quickstart](https://tiltedlabs-ai.github.io/mcschemora/quickstart/developers/) ·
+[Agent quickstart](https://tiltedlabs-ai.github.io/mcschemora/quickstart/agents/) ·
+[Full Markdown docs](https://tiltedlabs-ai.github.io/mcschemora/llms.txt) ·
+[Examples](https://tiltedlabs-ai.github.io/mcschemora/examples/)
 
-[Reproduce the banner build](https://github.com/tiltedlabs-ai/mcschemora/blob/main/examples/README.md#build-the-banner).
+## Install
 
-## Capabilities
-
-- Build with version-checked block states, bulk edits, and named regions.
-- Filter selections; copy, move, rotate, mirror, and normalize builds.
-- Check Java game rules and review conversion errors and losses before export.
-- Inspect blocks, inventories, and entities; estimate material costs and values.
-- Export textured PNGs, GLB models, sprite diagrams, and layered wiki blueprints.
-
-Read and write `.schem`, `.litematic`, `.nbt`, `.snbt`, `.mcstructure`, and
-Minecraft Wiki blueprints. Available operations depend on the edition and format.
-Browser WASM supports authoring, validation, inspection of blocks, conversion,
-and material estimates; it does not expose PNG/GLB rendering.
-
-## Get started with Python
+With [uv](https://docs.astral.sh/uv/getting-started/installation/) installed, run
+from an empty directory:
 
 ```sh
-python -m pip install mcschemora
+uv init --python 3.12
+uv add mcschemora
 ```
 
-Create a floor, check it, and save it as a Sponge schematic:
+In an existing uv project, use `uv add mcschemora`. Run scripts with `uv run build.py`.
+MCSchemora supports Python 3.10 or later. Catalogs download on first use;
+textured rendering also needs visual assets. See [versions and offline use](https://tiltedlabs-ai.github.io/mcschemora/sdk/minecraft-data/).
+
+## Build a schematic
 
 ```python
 from mcschemora import Schematic, block
 
-schematic = Schematic.create(version="1.21.1")
-floor = schematic.region().select(start=(0, 0, 0), size=(7, 1, 7))
-floor.fill(block("stone_bricks"))
-print(schematic.validate())
-schematic.save("floor.schem")
+scene = Schematic.create(version="1.21.1")
+scene.region().select(start=(0, 0, 0), size=(7, 1, 7)).fill(block("stone_bricks"))
+print(scene.validate())
+scene.save("floor.schem")
 ```
 
-Catalogs download on first use; textured rendering also downloads visual assets. See
-[cache preparation and offline use](https://tiltedlabs-ai.github.io/mcschemora/reference/minecraft-data/#cache-and-offline-use).
-To run from a checkout, follow the
-[example setup](https://github.com/tiltedlabs-ai/mcschemora/blob/main/examples/README.md)
-or [contributor setup](https://github.com/tiltedlabs-ai/mcschemora/blob/main/CONTRIBUTING.md).
+The [developer quickstart](https://tiltedlabs-ai.github.io/mcschemora/quickstart/developers/)
+builds a workshop and renders a preview. The
+[agent quickstart](https://tiltedlabs-ai.github.io/mcschemora/quickstart/agents/)
+provides a build request and instructions for checking and delivering the result.
 
-## Showcase
+## What it does
 
-Shan shui mountain scroll:
-[source code](https://github.com/tiltedlabs-ai/mcschemora/blob/main/examples/jade_scroll.py)
+- Author blocks with version-checked states, bulk placement, and named regions.
+- Select, copy, rotate, mirror, and restyle existing structures.
+- Validate supported Java game rules and inspect blocks, inventories, and entities.
+- Estimate construction materials and compare fixed material values.
+- Read and write `.schem`, `.litematic`, Java structure NBT/SNBT, `.mcstructure`, and wiki blueprints.
+- Export textured PNGs, GLB models, sprite layers, and wiki markup in Python and Rust.
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/tiltedlabs-ai/mcschemora/main/docs/assets/jade-scroll.png" alt="Jade mountain scroll with floating islands, waterfalls, and a pavilion">
-</p>
+Support depends on edition and format. Browser WASM exposes authoring,
+conversion, validation, and material estimates; see
+[formats and support](https://tiltedlabs-ai.github.io/mcschemora/reference/formats/)
+for binding and edition limits.
 
-Gyroid rainbow reef:
-[source code](https://github.com/tiltedlabs-ai/mcschemora/blob/main/examples/reef.py)
+Read the SDK chapters on
+[palettes and profiles](https://tiltedlabs-ai.github.io/mcschemora/sdk/palettes/) and
+[materials and costs](https://tiltedlabs-ai.github.io/mcschemora/sdk/materials-and-costs/),
+or run concrete examples for
+[conversion](https://tiltedlabs-ai.github.io/mcschemora/examples/litematic-to-schem/),
+[cost comparison](https://tiltedlabs-ai.github.io/mcschemora/examples/compare-palettes/), and
+[layer diagrams](https://tiltedlabs-ai.github.io/mcschemora/examples/layer-diagrams/).
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/tiltedlabs-ai/mcschemora/main/docs/assets/reef.png" alt="Procedural rainbow gyroid reef on a dark plinth">
-</p>
-
-## Documentation
-
-- [Usage guide](https://tiltedlabs-ai.github.io/mcschemora/guides/usage/)
-  and [runnable examples](https://github.com/tiltedlabs-ai/mcschemora/blob/main/examples/README.md).
-- [Rust quickstart](https://tiltedlabs-ai.github.io/mcschemora/guides/getting-started-rust/)
-  and [browser WASM quickstart](https://tiltedlabs-ai.github.io/mcschemora/guides/getting-started-wasm/).
-- [API reference](https://tiltedlabs-ai.github.io/mcschemora/reference/api/)
-  and [catalogs and assets](https://tiltedlabs-ai.github.io/mcschemora/reference/minecraft-data/).
-- [Documentation index](https://tiltedlabs-ai.github.io/mcschemora/),
-  [contributing](https://github.com/tiltedlabs-ai/mcschemora/blob/main/CONTRIBUTING.md),
-  and [changelog](https://github.com/tiltedlabs-ai/mcschemora/blob/main/CHANGELOG.md).
+For development, use the [contributor guide](https://tiltedlabs-ai.github.io/mcschemora/contributing/).
 
 ## License
 
 Project code is [MIT licensed](https://github.com/tiltedlabs-ai/mcschemora/blob/main/LICENSE).
-Bundled and downloaded data and assets have
-[their own sources and terms](https://tiltedlabs-ai.github.io/mcschemora/reference/sources/).
-
-MCSchemora is an independent project and is not affiliated with Mojang, Microsoft, or PrismarineJS.
+Data and assets have [their own sources and terms](https://tiltedlabs-ai.github.io/mcschemora/reference/sources/).
+MCSchemora is independent of Mojang, Microsoft, and PrismarineJS.

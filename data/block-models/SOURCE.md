@@ -19,7 +19,7 @@ Java 1.21.1. Native rendering uses the shared Java 1.21.6 visual bundle.
 Check out the pinned upstream revision, then run from the repository root:
 
 ```sh
-python scripts/import_special_models.py /path/to/block-model-renderer /path/to/prepared/visuals
+uv run --locked scripts/import_special_models.py /path/to/block-model-renderer /path/to/prepared/visuals
 ```
 
 The second argument must contain prepared `models.json`, `textures.json`, and

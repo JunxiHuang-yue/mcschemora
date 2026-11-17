@@ -1,0 +1,43 @@
+{
+  "inspection": {
+    "complete": true,
+    "diagnostics": [],
+    "edition": "java",
+    "version": "1.21.1",
+    "data_version": 3955,
+    "regions": {
+      "main": [
+        87,
+        174,
+        87
+      ]
+    },
+    "volume": 1317006,
+    "blocks": {
+      "minecraft:air": 1297566,
+      "minecraft:brown_concrete": 3013,
+      "minecraft:brown_terracotta": 3372,
+      "minecraft:dark_oak_fence": 512,
+      "minecraft:dark_oak_planks": 4002,
+      "minecraft:grass_block": 400,
+      "minecraft:smooth_stone": 6337,
+      "minecraft:stone_bricks": 1804
+    },
+    "items": {},
+    "entities": {},
+    "inventories": [],
+    "identifiers": [],
+    "payload_fields": [],
+    "retained_data": false,
+    "entities_outside_bounds": false,
+    "entity_count": 0,
+    "moving_entities": false,
+    "max_stack_count": 0
+  },
+  "validation": {
+    "errors": [],
+    "warnings": [],
+    "unknown": []
+  },
+  "render_diagnostics": []
+}

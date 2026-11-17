@@ -1,0 +1,18 @@
+{
+  "items": {
+    "minecraft:chest": 1,
+    "minecraft:crafting_table": 1,
+    "minecraft:furnace": 1,
+    "minecraft:oak_log": 12,
+    "minecraft:oak_slab": 49,
+    "minecraft:red_bed": 1,
+    "minecraft:stone_bricks": 49
+  },
+  "raw_materials": {
+    "minecraft:beetroot": 3.0,
+    "minecraft:cobbled_deepslate": 8.0,
+    "minecraft:oak_log": 21.875,
+    "minecraft:stone": 49.0,
+    "minecraft:white_wool": 3.0
+  }
+}

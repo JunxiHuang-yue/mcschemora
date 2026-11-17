@@ -1392,7 +1392,7 @@ class ScheduledTick:
 
 @dataclass(frozen=True)
 class Entity:
-    """An immutable snapshot of a entity returned by Entities.get().
+    """An immutable snapshot of an entity returned by Entities.get().
 
     Attributes:
         reference: Schematic-local integer used to address the stored entity.

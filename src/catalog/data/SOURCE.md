@@ -40,8 +40,8 @@ using the newly generated item IDs to validate recipe names.
 Run these commands from the repository root:
 
 ```sh
-python scripts/generate_snapshots.py
-python scripts/generate_snapshots.py --check
+uv run --locked scripts/generate_snapshots.py
+uv run --locked scripts/generate_snapshots.py --check
 ```
 
 The generator rebuilds every bundled registry snapshot and its entries in the
@@ -52,8 +52,8 @@ an entry in `src/catalog/snapshots.rs` to ship in the library.
 To update official recipes for every supported version:
 
 ```sh
-python scripts/import_recipes.py
-python scripts/import_recipes.py --check
+uv run --locked scripts/import_recipes.py
+uv run --locked scripts/import_recipes.py --check
 ```
 
 Full generation requires a JDK capable of running the requested Minecraft

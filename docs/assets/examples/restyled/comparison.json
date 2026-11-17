@@ -1,0 +1,98 @@
+{
+  "before": {
+    "materials": {
+      "items": {
+        "minecraft:chest": 1,
+        "minecraft:crafting_table": 1,
+        "minecraft:furnace": 1,
+        "minecraft:oak_log": 12,
+        "minecraft:oak_slab": 49,
+        "minecraft:red_bed": 1,
+        "minecraft:stone_bricks": 49
+      },
+      "raw_materials": {
+        "minecraft:beetroot": 3.0,
+        "minecraft:cobbled_deepslate": 8.0,
+        "minecraft:oak_log": 21.875,
+        "minecraft:stone": 49.0,
+        "minecraft:white_wool": 3.0
+      }
+    },
+    "values": {
+      "emc": {
+        "total": 1101.0,
+        "unpriced": {}
+      },
+      "essentialsx": {
+        "total": 147.0,
+        "unpriced": {
+          "minecraft:beetroot": 3.0,
+          "minecraft:cobbled_deepslate": 8.0,
+          "minecraft:oak_log": 21.875,
+          "minecraft:white_wool": 3.0
+        }
+      }
+    }
+  },
+  "after": {
+    "materials": {
+      "items": {
+        "minecraft:birch_log": 12,
+        "minecraft:birch_slab": 49,
+        "minecraft:chest": 1,
+        "minecraft:crafting_table": 1,
+        "minecraft:deepslate_bricks": 49,
+        "minecraft:furnace": 1,
+        "minecraft:red_bed": 1
+      },
+      "raw_materials": {
+        "minecraft:beetroot": 3.0,
+        "minecraft:birch_log": 18.125,
+        "minecraft:cobbled_deepslate": 57.0,
+        "minecraft:oak_log": 3.75,
+        "minecraft:white_wool": 3.0
+      }
+    },
+    "values": {
+      "emc": {
+        "total": 1150.0,
+        "unpriced": {}
+      },
+      "essentialsx": {
+        "total": 0.0,
+        "unpriced": {
+          "minecraft:beetroot": 3.0,
+          "minecraft:birch_log": 18.125,
+          "minecraft:cobbled_deepslate": 57.0,
+          "minecraft:oak_log": 3.75,
+          "minecraft:white_wool": 3.0
+        }
+      }
+    }
+  },
+  "changes": {
+    "changed": 110,
+    "replacements": [
+      {
+        "from": "minecraft:oak_log",
+        "to": "minecraft:birch_log",
+        "count": 12
+      },
+      {
+        "from": "minecraft:oak_slab",
+        "to": "minecraft:birch_slab",
+        "count": 49
+      },
+      {
+        "from": "minecraft:stone_bricks",
+        "to": "minecraft:deepslate_bricks",
+        "count": 49
+      }
+    ]
+  },
+  "import_diagnostics": [],
+  "render_diagnostics": {
+    "before": [],
+    "after": []
+  }
+}

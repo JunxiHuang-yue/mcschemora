@@ -23,7 +23,7 @@ metadata, plus the imported module snapshots. The importer follows
 Run from the repository root:
 
 ```sh
-uv run --with pillow python scripts/import_wiki_sprites.py
+uv run --with pillow scripts/import_wiki_sprites.py
 ```
 
 The importer reuses its cached source inventory. Add `--refresh` to fetch a new

@@ -1,0 +1,18 @@
+[
+  {
+    "source": "workshop-regions.litematic",
+    "import_diagnostics": [],
+    "errors": [],
+    "losses": [],
+    "status": "saved",
+    "output": "workshop-regions.litematic.litematic"
+  },
+  {
+    "source": "workshop.schem",
+    "import_diagnostics": [],
+    "errors": [],
+    "losses": [],
+    "status": "saved",
+    "output": "workshop.schem.litematic"
+  }
+]

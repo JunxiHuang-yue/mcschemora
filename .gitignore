@@ -20,6 +20,9 @@ build/
 dist/
 site/
 .cache/
+/output/
+/docs/examples/downloads/
+/docs/llms.txt
 
 # Tool caches and coverage output.
 .ruff_cache/

@@ -73,7 +73,7 @@ def create_reef(diameter=64, periods=2.5, thickness=0.35):
 
 def main():
     parser = argparse.ArgumentParser(description="Build and render a rainbow gyroid reef.")
-    parser.add_argument("--output", type=Path, default=Path("examples/output"))
+    parser.add_argument("--output", type=Path, default=Path("output"))
     parser.add_argument("--diameter", type=int, default=64)
     parser.add_argument("--periods", type=float, default=2.5)
     parser.add_argument("--thickness", type=float, default=0.35)

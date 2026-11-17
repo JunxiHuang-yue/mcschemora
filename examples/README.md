@@ -1,146 +1,43 @@
 # Examples
 
-Run these scripts from a repository checkout. For Python, install
-[uv](https://docs.astral.sh/uv/) and [Rust](https://rustup.rs/), then run
-`uv sync --locked` from the repository root. The Rust example needs Rust 1.88 or
-later. All examples pin Java 1.21.1.
-Catalogs download on first use; PNG/GLB also download visual assets.
-Run all commands below from the repository root. Generated files go in the
-ignored `examples/output/` directory.
+The [example walkthroughs](https://tiltedlabs-ai.github.io/mcschemora/examples/)
+explain how to import a farm, generate a build, or edit an existing schematic.
+They include downloadable scripts, prebuilt schematics, and previews or reports
+so you can compare your result.
 
-| Workflow | Script | Outputs |
-| --- | --- | --- |
-| Build and inspect | [build.py](build.py) | `workshop.schem`, a text layer, validation report |
-| Build with Rust | [build.rs](build.rs) | `floor.schem`, validation report |
-| Copy, rotate, restyle | [edit.py](edit.py) | `workshops.schem`, bounds and block count |
-| Inspect and convert | [convert.py](convert.py) | Destination file and export report |
-| Render and blueprint | [render.py](render.py) | Textured PNG, sprite PNG, GLB, `.wiki` template, visual diagnostics |
-| Build the README banner | [banner.py](banner.py) | `banner.schem`, `banner.png` |
-| Build procedural rainbow art | [reef.py](reef.py) | `reef.schem`, `reef.png` |
-| Build a jade mountain scroll | [jade_scroll.py](jade_scroll.py) | `jade-scroll.schem`, `jade-scroll.png` |
+## From a checkout
 
-## Build and inspect
+Run the commands below at the repository root. uv uses the locked development
+environment and builds the local package. Start with the workshop generator;
+the editing, conversion, and reporting commands use its saved schematic:
 
 ```sh
-uv run --locked python examples/build.py
+uv run --locked examples/build.py
+uv run --locked examples/edit.py output/workshop.schem
+uv run --locked examples/render.py output/workshop.schem
+uv run --locked examples/convert.py output/workshop.schem output/workshop.litematic
+uv run --locked examples/materials.py output/workshop.schem
+uv run --locked examples/restyle.py output/workshop.schem examples/workshop_palette.json
+uv run --locked examples/rotate.py output/workshop.schem
+uv run --locked examples/layers.py output/workshop.schem
+uv run --locked examples/eiffel_tower.py
+uv run --locked examples/import_farm.py docs/assets/examples/imported-farm/achromoss-v0.4.litematic
 ```
 
-The workshop has a stone-brick floor, four log pillars, a slab roof, a bed,
-an inventory chest, a crafting table, and a furnace. The script prints a layer
-grid and validation report:
+Generated files go to `output/` by default. For builds and renders, `--output`
+chooses another directory; the converter takes an explicit source and destination.
+Generated builds use Java 1.21.1, while the imported AChromoss farm retains Java
+1.21.4. The farm schematic and preview are AGPL-3.0, with
+[source and credits](../docs/assets/examples/imported-farm/SOURCE.md) included.
 
-```text
-y=1; x=0..6, z=0..6
-4 . . . . . 4
-. . . . 3 . .
-. . . . 2 . .
-. 6 . . . . .
-. 5 . . 1 . .
-. . . . . . .
-4 . . . . . 4
-. = air; - = unselected
-1 = minecraft:chest[facing=north,type=single,waterlogged=false]
-2 = minecraft:crafting_table
-3 = minecraft:furnace[facing=west,lit=false]
-4 = minecraft:oak_log[axis=y]
-5 = minecraft:red_bed[facing=north,occupied=false,part=foot]
-6 = minecraft:red_bed[facing=north,occupied=false,part=head]
-No issues found.
-Saved workshop.schem
-```
+## Standalone scripts
 
-## Build with Rust
+You can also download a script from its walkthrough and run it in an empty
+directory. For example, `uv run --with mcschemora build.py` installs the PyPI
+package in a uv-managed environment and runs the workshop generator. First use
+downloads the required catalogs; textured rendering also downloads visual assets.
 
-```sh
-cargo run --example build
-```
+## Rust
 
-The example prints a validation report and writes `examples/output/floor.schem`.
-See the [Rust quickstart](../docs/guides/getting-started-rust.md) for application
-setup and PNG rendering.
-
-## Build the banner
-
-```sh
-uv run --locked python examples/banner.py
-```
-
-<p align="center">
-  <img src="../docs/assets/banner.png" alt="MCSchemora island banner">
-</p>
-
-## Build the gyroid rainbow reef
-
-```sh
-uv run --locked python examples/reef.py
-```
-
-<p align="center">
-  <img src="../docs/assets/reef.png" alt="Procedural rainbow gyroid reef on a dark plinth" width="720">
-</p>
-
-## Build the jade mountain scroll
-
-```sh
-uv run --locked python examples/jade_scroll.py
-```
-
-<p align="center">
-  <img src="../docs/assets/jade-scroll.png" alt="Jade mountain scroll with floating islands, waterfalls, and a pavilion over water">
-</p>
-
-## Copy, rotate, and restyle
-
-```sh
-uv run --locked python examples/edit.py
-```
-
-```text
-Original bounds: Bounds(start=(0, 0, 0), size=(7, 5, 7))
-Copy bounds: Bounds(start=(10, 0, 0), size=(7, 5, 7))
-Birch logs: 12
-No issues found.
-Saved workshops.schem
-```
-
-The copied workshop is rotated by a quarter turn, including its directional
-block states, then its log pillars are replaced with birch logs.
-
-## Convert
-
-Run the build example first:
-
-```sh
-uv run --locked python examples/convert.py examples/output/workshop.schem examples/output/workshop.litematic
-```
-
-```text
-Edition: java; version: 1.21.1
-Regions: main
-No issues found.
-Saved workshop.litematic
-```
-
-Conversion exits before writing if the export report has errors or unaccepted
-losses. `--flatten` combines nonoverlapping regions; `--allow-loss` explicitly
-accepts reported omissions. See the [conversion workflow](../docs/guides/usage.md#inspect-and-convert).
-
-## Render and export a blueprint
-
-```sh
-uv run --locked python examples/render.py
-```
-
-Textured cutaway, with the roof excluded from this preview:
-
-<p align="center">
-  <img src="../docs/assets/workshop.png" alt="Workshop cutaway">
-</p>
-
-Sprite diagram of Y=1 (the region origin is zero):
-
-<p align="center">
-  <img src="../docs/assets/workshop-layer.png" alt="Workshop sprite layer">
-</p>
-
-See the [usage guide](../docs/guides/usage.md) to adapt these workflows.
+For the Rust example, run `cargo run --example build` from a checkout with Rust
+1.88 or later. See the [Rust guide](https://tiltedlabs-ai.github.io/mcschemora/languages/rust/).

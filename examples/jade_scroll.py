@@ -251,7 +251,7 @@ def main():
     parser = argparse.ArgumentParser(
         description="Build and render a jade mountain scroll with floating islands."
     )
-    parser.add_argument("--output", type=Path, default=Path("examples/output"))
+    parser.add_argument("--output", type=Path, default=Path("output"))
     parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)

@@ -1,0 +1,46 @@
+[
+  {
+    "y": 0,
+    "file": "layer-000-y0.png",
+    "diagnostics": [
+      "Ordinary block sprites are wiki icons, not view-specific block faces"
+    ]
+  },
+  {
+    "y": 1,
+    "file": "layer-001-y1.png",
+    "diagnostics": [
+      "1 selected block entities have data not represented by sprites",
+      "Ordinary block sprites are wiki icons, not view-specific block faces",
+      "minecraft:chest[facing=north,type=single,waterlogged=false]: sprite does not encode facing, type, waterlogged",
+      "minecraft:furnace[facing=west,lit=false]: sprite does not encode facing, lit",
+      "minecraft:oak_log[axis=y]: sprite does not encode axis",
+      "minecraft:red_bed[facing=north,occupied=false,part=foot]: sprite does not encode occupied",
+      "minecraft:red_bed[facing=north,occupied=false,part=head]: sprite does not encode occupied"
+    ]
+  },
+  {
+    "y": 2,
+    "file": "layer-002-y2.png",
+    "diagnostics": [
+      "Ordinary block sprites are wiki icons, not view-specific block faces",
+      "minecraft:oak_log[axis=y]: sprite does not encode axis"
+    ]
+  },
+  {
+    "y": 3,
+    "file": "layer-003-y3.png",
+    "diagnostics": [
+      "Ordinary block sprites are wiki icons, not view-specific block faces",
+      "minecraft:oak_log[axis=y]: sprite does not encode axis"
+    ]
+  },
+  {
+    "y": 4,
+    "file": "layer-004-y4.png",
+    "diagnostics": [
+      "Ordinary block sprites are wiki icons, not view-specific block faces",
+      "minecraft:oak_slab[type=bottom,waterlogged=false]: sprite does not encode type, waterlogged"
+    ]
+  }
+]

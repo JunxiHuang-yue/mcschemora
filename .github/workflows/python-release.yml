@@ -65,17 +65,17 @@ jobs:
           target: ${{ matrix.target }}
           manylinux: '2_28'
           args: --release --locked --sdist --out dist
+      - uses: astral-sh/setup-uv@v7
       - name: Check distributions
         run: |
-          python scripts/check_distributions.py dist
-          python -m pip install 'twine==6.2.0'
-          python -m twine check --strict dist/*
+          uv run --no-project --no-managed-python --python 3.12 scripts/check_distributions.py dist
+          uvx --from 'twine==6.2.0' twine check --strict dist/*
       - name: Check release tag
         if: startsWith(github.ref, 'refs/tags/')
         env:
           RELEASE_TAG: ${{ github.ref_name }}
         run: |
-          python - <<'PY'
+          uv run --no-project --no-managed-python --python 3.12 python - <<'PY'
           import os
           import tomllib
           from pathlib import Path
@@ -88,11 +88,11 @@ jobs:
           PACKAGE_ROOT: ${{ github.workspace }}
           CHECK_VISUALS: ${{ inputs.visuals || false }}
         run: |
-          python -m pip install --no-deps --no-index --find-links "$PACKAGE_ROOT/dist" mcschemora
+          uv pip install --system --no-deps --no-index --find-links "$PACKAGE_ROOT/dist" mcschemora
           if [ "$CHECK_VISUALS" = true ]; then
-            python -I "$PACKAGE_ROOT/scripts/verify_package.py" --visuals
+            uv run --no-project --no-managed-python --python 3.12 python -I "$PACKAGE_ROOT/scripts/verify_package.py" --visuals
           else
-            python -I "$PACKAGE_ROOT/scripts/verify_package.py"
+            uv run --no-project --no-managed-python --python 3.12 python -I "$PACKAGE_ROOT/scripts/verify_package.py"
           fi
       - name: Check conversion corpus
         if: matrix.name == 'linux-x86_64'
@@ -100,8 +100,8 @@ jobs:
         env:
           PACKAGE_ROOT: ${{ github.workspace }}
         run: |
-          python -m pip install 'nbtlib==2.0.4'
-          python -I "$PACKAGE_ROOT/scripts/verify_conversion.py"
+          uv pip install --system 'nbtlib==2.0.4'
+          uv run --no-project --no-managed-python --python 3.12 python -I "$PACKAGE_ROOT/scripts/verify_conversion.py"
       - uses: actions/setup-python@v6
         with:
           python-version: '3.10'
@@ -110,8 +110,8 @@ jobs:
         env:
           PACKAGE_ROOT: ${{ github.workspace }}
         run: |
-          python -m pip install --no-deps --no-index --find-links "$PACKAGE_ROOT/dist" mcschemora
-          python -I "$PACKAGE_ROOT/scripts/verify_package.py"
+          uv pip install --system --no-deps --no-index --find-links "$PACKAGE_ROOT/dist" mcschemora
+          uv run --no-project --no-managed-python --python 3.10 python -I "$PACKAGE_ROOT/scripts/verify_package.py"
       - uses: actions/upload-artifact@v6
         with:
           name: wheel-${{ matrix.name }}

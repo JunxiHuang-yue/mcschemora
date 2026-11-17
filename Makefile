@@ -1,4 +1,4 @@
-.PHONY: setup rebuild build check-dist verify format lint docs docs-check docs-wasm docs-build docs-serve
+.PHONY: setup rebuild build check-dist verify format lint docs docs-check docs-wasm docs-prepare docs-build docs-serve
 
 setup:
 	uv sync --locked
@@ -10,26 +10,29 @@ build:
 	uv run --locked maturin build --release --locked --sdist --out dist
 
 check-dist:
-	uv run --locked python scripts/check_distributions.py dist
+	uv run --locked scripts/check_distributions.py dist
 	uvx --from 'twine>=6,<7' twine check --strict dist/*
 
 verify:
-	uv run --locked python scripts/verify_package.py
-	uv run --locked python scripts/verify_conversion.py
+	uv run --locked scripts/verify_package.py
+	uv run --locked scripts/verify_conversion.py
 
 docs-wasm:
 	npm --prefix bindings/wasm run build
 
 docs: rebuild docs-wasm
-	uv run --locked python scripts/generate_docs.py
+	uv run --locked scripts/generate_docs.py
 
 docs-check: rebuild docs-wasm
-	uv run --locked python scripts/generate_docs.py --check
+	uv run --locked scripts/generate_docs.py --check
 
-docs-build:
+docs-prepare:
+	uv run --locked --only-group docs scripts/prepare_docs.py
+
+docs-build: docs-prepare
 	uv run --locked --only-group docs zensical build --clean
 
-docs-serve:
+docs-serve: docs-prepare
 	uv run --locked --only-group docs zensical serve
 
 format:

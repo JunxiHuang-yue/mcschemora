@@ -1,0 +1,60 @@
+{{layered blueprint|name=Workshop
+|A=BlockSprite:chest
+|B=BlockSprite:crafting-table
+|C=BlockSprite:furnace
+|D=BlockSprite:oak-log
+|E=BlockSprite:oak-slab
+|F=BlockSprite:red-bed
+|G=BlockSprite:red-bed
+|H=BlockSprite:stone-bricks
+|----Layer 1|
+         
+ HHHHHHH 
+ HHHHHHH 
+ HHHHHHH 
+ HHHHHHH 
+ HHHHHHH 
+ HHHHHHH 
+ HHHHHHH 
+         
+|----Layer 2|
+         
+ D     D 
+     C   
+     B   
+  G      
+  F  A   
+         
+ D     D 
+         
+|----Layer 3|
+         
+ D     D 
+         
+         
+         
+         
+         
+ D     D 
+         
+|----Layer 4|
+         
+ D     D 
+         
+         
+         
+         
+         
+ D     D 
+         
+|----Layer 5|
+         
+ EEEEEEE 
+ EEEEEEE 
+ EEEEEEE 
+ EEEEEEE 
+ EEEEEEE 
+ EEEEEEE 
+ EEEEEEE 
+         
+}}

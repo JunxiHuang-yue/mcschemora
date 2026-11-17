@@ -1,0 +1,15 @@
+{
+  "emc": {
+    "total": 1101.0,
+    "unpriced": {}
+  },
+  "essentialsx": {
+    "total": 147.0,
+    "unpriced": {
+      "minecraft:beetroot": 3.0,
+      "minecraft:cobbled_deepslate": 8.0,
+      "minecraft:oak_log": 21.875,
+      "minecraft:white_wool": 3.0
+    }
+  }
+}
