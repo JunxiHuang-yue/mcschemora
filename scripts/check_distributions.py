@@ -35,7 +35,7 @@ def check_metadata(content: bytes, version: str) -> None:
     project = tomllib.loads((ROOT / "pyproject.toml").read_text())["project"]
     assert metadata["License-Expression"] == project["license"], metadata["License-Expression"]
     assert metadata["Description-Content-Type"].startswith("text/markdown")
-    description = metadata.get_payload(decode=True).decode("utf-8")
+    description = metadata.get_payload(decode=True).decode("utf-8").replace("\r\n", "\n")
     assert description.rstrip() == (ROOT / project["readme"]).read_text().rstrip(), (
         "Package description differs from the project README"
     )
