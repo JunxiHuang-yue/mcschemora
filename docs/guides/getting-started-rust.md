@@ -1,7 +1,7 @@
 # Getting started with Rust
 
-Use Rust 1.88 or later. The checkout selects its tested compiler through
-`rust-toolchain.toml`. The Rust example runs without Python.
+Use Rust 1.88 or later. The checkout pins Rust 1.88.0 in `rust-toolchain.toml`.
+The Rust examples run without Python.
 
 ## Run from this checkout
 
@@ -29,11 +29,12 @@ pollster = "0.4"
 ```
 
 Copy [examples/build.rs](../../examples/build.rs) to your application's `src/main.rs`
-and run `cargo run`.
+and run `cargo run`. The example writes `examples/output/floor.schem` relative to
+the working directory.
 
 ## Render a PNG
 
-Inside the example's async block, after creating the schematic:
+In the example's async block, after the output directory is created, add:
 
 ```rust
 let assets = data.geometry_assets(&schematic.version)?;
@@ -44,5 +45,6 @@ println!("Visual diagnostics: {:?}", prepared.diagnostics);
 ```
 
 Geometry preparation downloads visual assets on first use. Inspect its diagnostics
-for approximations. See [catalogs and assets](../reference/minecraft-data.md) for offline
-preparation and the [Rust reference](../reference/api.md#rust) for API documentation.
+for approximations. See [catalogs and assets](../reference/minecraft-data.md#rendering)
+for rendering limits and the [Rust reference](../reference/api.md#rust) for API
+documentation.

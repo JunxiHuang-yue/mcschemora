@@ -1,86 +1,88 @@
 # MCSchemora
 
+Build, edit, convert, and render Minecraft schematics. MCSchemora has a Rust core,
+Python bindings, and browser WASM bindings.
+
 <p align="center">
-  <img src="docs/assets/banner.png" alt="Banner built and rendered with MCSchemora">
+  <img src="https://raw.githubusercontent.com/tiltedlabs-ai/mcschemora/master/docs/assets/banner.png" alt="Island banner built and rendered with MCSchemora">
 </p>
 
 Author, edit, convert, and render Minecraft schematics in Rust with Python and WASM bindings.
 Supports `.schem`, `.litematic`, `.nbt`, `.snbt`, `.mcstructure`, and wiki blueprints.
 
-[Reproduce the banner build](examples/README.md#build-the-banner).
+[Reproduce the banner build](https://github.com/tiltedlabs-ai/mcschemora/blob/master/examples/README.md#build-the-banner).
 
 ## Capabilities
 
 - Build with version-checked block states, bulk edits, and named regions.
-- Filter selections; copy, move, rotate, and mirror builds.
-- Check Java game rules and inspect conversion losses before exporting.
-- Render textured PNGs, GLB models, sprite diagrams, and layered wiki blueprints.
+- Filter selections; copy, move, rotate, mirror, and normalize builds.
+- Check Java game rules and review conversion errors and losses before export.
+- Inspect blocks, inventories, and entities; estimate material costs and values.
+- Export textured PNGs, GLB models, sprite diagrams, and layered wiki blueprints.
 
-## Showcase
+Read and write `.schem`, `.litematic`, `.nbt`, `.snbt`, `.mcstructure`, and
+Minecraft Wiki blueprints. Available operations depend on the edition and format.
+Browser WASM supports authoring, validation, inspection of blocks, conversion,
+and material estimates; it does not expose PNG/GLB rendering.
 
-Shan Shui style world [code](examples/jade_scroll.py)
-<p align="center">
-  <img src="docs/assets/jade-scroll.png" alt="Shan Shui style world">
-</p>
-
-
-Gyroid reefs [code](examples/reef.py)
-<p align="center">
-  <img src="docs/assets/reef.png" alt="Gyroid reefs">
-</p>
-
-
-## Get started
-
-### Python
-
-The `0.1.0` release is being prepared. After publication, install with CPython 3.10+:
+## Get started with Python
 
 ```sh
 python -m pip install mcschemora
 ```
 
-Matching wheels include the compiled extension. For development, install
-[uv](https://docs.astral.sh/uv/) and [Rust](https://rustup.rs/), then run from the checkout:
+Create a floor, check it, and save it as a Sponge schematic:
 
-```sh
-uv sync --locked
-uv run --locked python examples/build.py
-uv run --locked python examples/render.py
+```python
+from mcschemora import Schematic, block
+
+schematic = Schematic.create(version="1.21.1")
+floor = schematic.region().select(start=(0, 0, 0), size=(7, 1, 7))
+floor.fill(block("stone_bricks"))
+print(schematic.validate())
+schematic.save("floor.schem")
 ```
 
-Catalogs download on first use; textured rendering also downloads visual assets.
-See [data preparation and offline use](docs/reference/minecraft-data.md#cache-and-offline-use).
+Catalogs download on first use; textured rendering also downloads visual assets. See
+[cache preparation and offline use](https://github.com/tiltedlabs-ai/mcschemora/blob/master/docs/reference/minecraft-data.md#cache-and-offline-use).
+To run from a checkout, follow the
+[example setup](https://github.com/tiltedlabs-ai/mcschemora/blob/master/examples/README.md)
+or [contributor setup](https://github.com/tiltedlabs-ai/mcschemora/blob/master/CONTRIBUTING.md).
 
-Example schematic output:
+## Showcase
+
+Shan shui mountain scroll:
+[script](https://github.com/tiltedlabs-ai/mcschemora/blob/master/examples/jade_scroll.py)
+and [run command](https://github.com/tiltedlabs-ai/mcschemora/blob/master/examples/README.md#build-the-jade-mountain-scroll).
 
 <p align="center">
-  <img src="docs/assets/workshop.png" alt="Workshop example output">
+  <img src="https://raw.githubusercontent.com/tiltedlabs-ai/mcschemora/master/docs/assets/jade-scroll.png" alt="Jade mountain scroll with floating islands, waterfalls, and a pavilion">
 </p>
 
-Example sprite output:
+Gyroid rainbow reef:
+[script](https://github.com/tiltedlabs-ai/mcschemora/blob/master/examples/reef.py)
+and [run command](https://github.com/tiltedlabs-ai/mcschemora/blob/master/examples/README.md#build-the-gyroid-rainbow-reef).
 
 <p align="center">
-  <img src="docs/assets/workshop-layer.png" alt="Sprite example output">
+  <img src="https://raw.githubusercontent.com/tiltedlabs-ai/mcschemora/master/docs/assets/reef.png" alt="Procedural rainbow gyroid reef on a dark plinth">
 </p>
-
-### Rust
-
-With a stable Rust toolchain, run from this checkout:
-
-```sh
-cargo run --example build
-```
 
 ## Documentation
 
-- [Quickstarts: Python](bindings/python/README.md) · [Rust](docs/guides/getting-started-rust.md) · [Browser WASM](bindings/wasm/README.md).
-- [Usage guide](docs/guides/usage.md) · [Examples and output gallery](examples/README.md).
-- [API reference](docs/reference/api.md) · [Catalogs and assets](docs/reference/minecraft-data.md).
-- [Documentation index and maintenance](docs/index.md).
-- [Contributing](CONTRIBUTING.md) · [Release preparation](docs/guides/releases.md) · [Changelog](CHANGELOG.md).
+- [Usage guide](https://github.com/tiltedlabs-ai/mcschemora/blob/master/docs/guides/usage.md)
+  and [runnable examples](https://github.com/tiltedlabs-ai/mcschemora/blob/master/examples/README.md).
+- [Rust quickstart](https://github.com/tiltedlabs-ai/mcschemora/blob/master/docs/guides/getting-started-rust.md)
+  and [browser WASM quickstart](https://github.com/tiltedlabs-ai/mcschemora/blob/master/docs/guides/getting-started-wasm.md).
+- [API reference](https://github.com/tiltedlabs-ai/mcschemora/blob/master/docs/reference/api.md)
+  and [catalogs and assets](https://github.com/tiltedlabs-ai/mcschemora/blob/master/docs/reference/minecraft-data.md).
+- [Documentation index](https://github.com/tiltedlabs-ai/mcschemora/blob/master/docs/index.md),
+  [contributing](https://github.com/tiltedlabs-ai/mcschemora/blob/master/CONTRIBUTING.md),
+  and [changelog](https://github.com/tiltedlabs-ai/mcschemora/blob/master/CHANGELOG.md).
 
 ## License
 
-Project code is [MIT licensed](LICENSE). Bundled and downloaded assets have
-[their own attribution and terms](docs/reference/minecraft-data.md#asset-attribution).
+Project code is [MIT licensed](https://github.com/tiltedlabs-ai/mcschemora/blob/master/LICENSE).
+Bundled and downloaded data and assets have
+[their own sources and terms](https://github.com/tiltedlabs-ai/mcschemora/blob/master/docs/reference/sources.md).
+
+MCSchemora is an independent project and is not affiliated with Mojang, Microsoft, or PrismarineJS.

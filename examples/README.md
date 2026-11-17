@@ -1,9 +1,12 @@
 # Examples
 
-Run from the repository root. Python examples need `uv sync --locked`;
-the Rust example needs a stable Rust toolchain. Examples pin Java 1.21.1.
+Run these scripts from a repository checkout. For Python, install
+[uv](https://docs.astral.sh/uv/) and [Rust](https://rustup.rs/), then run
+`uv sync --locked` from the repository root. The Rust example needs Rust 1.88 or
+later. All examples pin Java 1.21.1.
 Catalogs download on first use; PNG/GLB also download visual assets.
-Generated files go in the ignored `examples/output/` directory.
+Run all commands below from the repository root. Generated files go in the
+ignored `examples/output/` directory.
 
 | Workflow | Script | Outputs |
 | --- | --- | --- |
@@ -23,7 +26,8 @@ uv run --locked python examples/build.py
 ```
 
 The workshop has a stone-brick floor, four log pillars, a slab roof, a bed,
-an inventory chest, a crafting table, and a furnace. Actual output:
+an inventory chest, a crafting table, and a furnace. The script prints a layer
+grid and validation report:
 
 ```text
 y=1; x=0..6, z=0..6
@@ -51,13 +55,9 @@ Saved workshop.schem
 cargo run --example build
 ```
 
-```text
-Validation: Report { errors: [], warnings: [], unknown: [] }
-Saved floor.schem
-```
-
-See [getting started with Rust](../docs/guides/getting-started-rust.md) for local
-dependency setup and examples of loading and rendering.
+The example prints a validation report and writes `examples/output/floor.schem`.
+See the [Rust quickstart](../docs/guides/getting-started-rust.md) for application
+setup and PNG rendering.
 
 ## Build the banner
 
@@ -74,7 +74,6 @@ uv run --locked python examples/banner.py
 ```sh
 uv run --locked python examples/reef.py
 ```
-
 
 <p align="center">
   <img src="../docs/assets/reef.png" alt="Procedural rainbow gyroid reef on a dark plinth" width="720">
@@ -138,10 +137,10 @@ Textured cutaway, with the roof excluded from this preview:
   <img src="../docs/assets/workshop.png" alt="Workshop cutaway">
 </p>
 
-Sprite diagram of local/global Y=1:
+Sprite diagram of Y=1 (the region origin is zero):
 
 <p align="center">
   <img src="../docs/assets/workshop-layer.png" alt="Workshop sprite layer">
 </p>
 
-See [usage guide](../docs/guides/usage.md) for more details.
+See the [usage guide](../docs/guides/usage.md) to adapt these workflows.

@@ -1,25 +1,15 @@
 # MCSchemora documentation
 
-MCSchemora authors Minecraft schematics through Rust, Python, and browser WASM interfaces.
-Choose a language quickstart, then use the guide or runnable examples for a workflow.
+Start with a language quickstart, then use the guide or examples for a task.
 
 | Goal | Read |
 | --- | --- |
-| Get started with Python | [Python binding](../bindings/python/README.md) |
-| Build, load, and render from Rust | [Getting started with Rust](guides/getting-started-rust.md) |
-| Use MCSchemora in the browser | [WASM binding](../bindings/wasm/README.md) |
-| Edit, convert, render, or make a blueprint | [Usage guide](guides/usage.md) |
-| Find an API contract | [Generated reference](reference/api.md) |
-| Select a Minecraft version or work offline | [Catalogs and assets](reference/minecraft-data.md) |
-| Run complete workflows and see their results | [Examples](../examples/README.md) |
-| Build, check, and upload Python release files | [Release guide](guides/releases.md) |
+| Get started with Python | [Python quickstart](../README.md#get-started-with-python) |
+| Build and render with Rust | [Rust quickstart](guides/getting-started-rust.md) |
+| Use MCSchemora in a browser | [WASM quickstart](guides/getting-started-wasm.md) |
+| Edit, inspect, convert, or render | [Usage guide](guides/usage.md) |
+| Find method arguments and behavior | [API reference](reference/api.md) |
+| Select a version or prepare for offline use | [Catalogs and assets](reference/minecraft-data.md) |
+| Run complete workflows and see outputs | [Examples](../examples/README.md) |
+| Check data sources and asset terms | [Sources and attribution](reference/sources.md) |
 | Contribute a change | [Contributor guide](../CONTRIBUTING.md) |
-
-## Updating documentation
-
-After an API or docstring change:
-
-```sh
-make docs
-make docs-check
-```

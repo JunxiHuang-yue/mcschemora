@@ -1,20 +1,23 @@
-# Minecraft runtime data
+# Downloaded catalogs and visual assets
 
-MCSchemora fetches raw JSON files from
-[PrismarineJS/minecraft-data](https://github.com/PrismarineJS/minecraft-data/tree/8ffb321c74cffe779acf5c447d08c473c4c291d7)
-at commit `8ffb321c74cffe779acf5c447d08c473c4c291d7`.
+MCSchemora downloads catalog JSON and prepares block visuals for native rendering.
+These downloads are separate from the data bundled in the package.
 
-Catalog data is limited to Java 1.13 and above. Catalog selection and schematic
-validation use the requested version, with official snapshots bundled for
-selected versions in `src/catalog/data`. Rendering uses a shared Java
-1.21.6 visual bundle and converts a temporary block-state palette.
+## Sources
 
-## Block visual inputs
+| Input | Upstream repository | Revision |
+| --- | --- | --- |
+| Catalog JSON | [PrismarineJS/minecraft-data](https://github.com/PrismarineJS/minecraft-data/tree/8ffb321c74cffe779acf5c447d08c473c4c291d7) | `8ffb321c74cffe779acf5c447d08c473c4c291d7` |
+| Block models and textures | [PrismarineJS/minecraft-assets](https://github.com/PrismarineJS/minecraft-assets/tree/67c9b138b00a6b67c29ba68dae74c41faef4889d) | `67c9b138b00a6b67c29ba68dae74c41faef4889d` |
 
-Visuals use [PrismarineJS/minecraft-assets](https://github.com/PrismarineJS/minecraft-assets/tree/67c9b138b00a6b67c29ba68dae74c41faef4889d)
-at commit `67c9b138b00a6b67c29ba68dae74c41faef4889d`. 
+## Local data
 
-## Prepared format
+Catalog selection and validation use the requested Java version, starting at
+1.13. Selected versions use bundled official snapshots instead of upstream
+registry JSON. Rendering uses a shared Java 1.21.6 visual bundle and converts a
+temporary block-state palette.
+
+The prepared visual bundle contains:
 
 - `blockstates.json`: map from block IDs to variants and multipart
   conditions. Model references are IDs. Rotations, weights, and UV
@@ -38,12 +41,21 @@ at commit `67c9b138b00a6b67c29ba68dae74c41faef4889d`.
   source versions, input files and hashes, atlas dimensions, abstract unresolved
   variables, and renderer limitations.
 
-## Attribution
+## Updating
 
-Entity model definitions combine Mojang geometry and PrismarineViewer
-data. Source revisions, licenses, and local corrections are recorded in
+Catalog and visual source pins are defined in `src/catalog/source.rs` and
+`src/catalog/storage/native/visuals.rs`. Update the pins and check affected
+catalogs and renders together. Normal use downloads and caches data as needed; the
+[cache and offline guide](https://github.com/tiltedlabs-ai/mcschemora/blob/master/docs/reference/minecraft-data.md#cache-and-offline-use)
+explains preparation and offline use.
+
+## Terms
+
+Upstream notices are recorded in the
+[minecraft-data README](https://github.com/PrismarineJS/minecraft-data/blob/8ffb321c74cffe779acf5c447d08c473c4c291d7/README.md)
+and the
+[minecraft-assets README](https://github.com/PrismarineJS/minecraft-assets/blob/67c9b138b00a6b67c29ba68dae74c41faef4889d/README.md).
+Minecraft visual assets remain subject to
+[Minecraft's usage guidelines](https://www.minecraft.net/en-us/usage-guidelines).
+Entity model sources and local corrections are recorded separately in
 `data/entity-models/entities.json` under `source`.
-
-- [minecraft-data](https://github.com/PrismarineJS/minecraft-data/blob/8ffb321c74cffe779acf5c447d08c473c4c291d7/README.md).
-- [minecraft-assets](https://github.com/PrismarineJS/minecraft-assets/blob/67c9b138b00a6b67c29ba68dae74c41faef4889d/README.md).
-- Minecraft visual assets remain subject to [Minecraft's usage guidelines](https://www.minecraft.net/en-us/usage-guidelines).

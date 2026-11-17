@@ -31,11 +31,15 @@ def signature(value, stub: ast.FunctionDef | None = None) -> str:
     for parameter in result.parameters.values():
         if parameter.name in {"self", "cls"}:
             continue
-        annotation = annotations.get(parameter.name, parameter.annotation)
+        annotation = parameter.annotation
+        if annotation is inspect.Parameter.empty:
+            annotation = annotations.get(parameter.name, annotation)
         if isinstance(annotation, str):
             parameter = parameter.replace(annotation=Annotation(annotation))
         parameters.append(parameter)
-    returns = ast.unparse(stub.returns) if stub and stub.returns else result.return_annotation
+    returns = result.return_annotation
+    if returns is inspect.Signature.empty and stub and stub.returns:
+        returns = ast.unparse(stub.returns)
     if isinstance(returns, str):
         returns = Annotation(returns)
     result = result.replace(parameters=parameters, return_annotation=returns)
@@ -231,7 +235,7 @@ def wasm_reference() -> str:
         [
             "## Browser WASM",
             "",
-            "See the [browser quickstart](../../bindings/wasm/README.md) for initialization, "
+            "See the [browser quickstart](../guides/getting-started-wasm.md) for initialization, "
             "file import, and resource cleanup.",
             "",
             "The complete declarations, including initialization types, are generated at "

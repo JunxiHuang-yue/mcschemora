@@ -2,67 +2,27 @@
 
 ## Version selection
 
-Pin a Minecraft version for reproducible builds. Catalog validation uses that
-version, while PNG/GLB appearance uses a shared Java 1.21.6 visual bundle.
-Rendering converts a temporary palette to 1.21.6 using the block-state conversion
-rules. For available versions, datasets,
-and loading methods, see [MinecraftData](api.md#minecraftdata).
+Pin a Minecraft version for reproducible builds. `latest` resolves to the newest
+supported release in the pinned metadata, without a live Mojang release lookup.
+Authoring and validation use the selected version's Java catalog. Available catalog versions are listed by
+`MinecraftData.versions`; catalog coverage does not mean every operation supports
+every version. See [MinecraftData](api.md#minecraftdata) for loading methods.
 
-## Recipe data
+Creating a provider or importing the Python package does not download Minecraft
+data. Catalogs load on first use from pinned sources. Textured rendering also
+needs visual assets.
 
-Recipes load on demand through the same catalog provider:
+## Cache and offline use
 
-```python
-from mcschemora import MinecraftData
+Native Rust and Python use a filesystem cache:
 
-data = MinecraftData()
-recipes = data.dataset("1.21.1", "recipes")
-items = data.dataset("1.21.1", "items")
-```
-
-Recipes come from each version's official server JAR, including smelting and
-other processing recipes. One bundled tracker stores shared recipes and their
-version-specific variants using item names. It maps names to the requested
-catalog's numeric IDs when loading. Runtime use does not download or execute
-server JARs. Blocks and items keep their existing catalog sources.
-
-The numeric recipe index uses `inShape`/`ingredients` and `result`, keyed by output item ID.
-Use the same version's `items` dataset to resolve ingredient and output IDs.
-
-Every supported version also provides `recipeDefinitions`, containing every original vanilla recipe
-keyed by recipe ID, and `itemTags`, mapping item-tag IDs to resolved numeric item IDs.
-Special and component-dependent recipes, including brewing, remain available in
-`recipeDefinitions`; the numeric `recipes` index covers fixed-input, fixed-output
-crafting, cooking, stonecutting, smithing, and transmutation recipes.
-
-The index enumerates alternatives once per distinct ingredient, so repeated uses
-of the same ingredient share a choice. Original definitions and resolved tags
-preserve the full ingredient alternatives, including mixed-material combinations.
-Crafting recipes appear before cooking/stonecutting recipes; entries are otherwise
-ordered by recipe ID.
-
-Regenerate the recipe tracker with `python scripts/import_recipes.py`; add
-`--check` to verify generated files without changing them. Version arguments
-select versions to refresh within the tracker. The importer uses only Python's standard library,
-verifies official downloads, resolves ingredient tags, and maps item names to
-the matching version's catalog IDs. See the [recipe source records](../../src/catalog/recipes/SOURCE.md).
-
-## Generating bundled snapshots
-
-`python scripts/generate_snapshots.py` regenerates all bundled snapshots from the
-official runtimes, including blocks, items, entity classification, and biomes,
-and refreshes their entries in the recipe tracker. It shares the importer's cache and requires JDK 25 for
-the currently bundled versions. Version arguments select individual versions;
-`--check` compares generated output without writing snapshots. See the
-[generation instructions and sources](../../src/catalog/data/SOURCE.md).
-
-| Platform | Directory |
+| Platform | Default directory |
 | --- | --- |
 | Linux | `$XDG_CACHE_HOME/mcschemora` when the variable is an absolute path; otherwise `~/.cache/mcschemora` |
 | macOS | `~/Library/Caches/mcschemora` |
 | Windows | `%LOCALAPPDATA%/mcschemora` |
 
-Choose a writable cache and load the required data before going offline:
+Choose a writable cache and prepare the data before going offline:
 
 ```python
 from mcschemora import MinecraftData, Schematic, block
@@ -76,43 +36,80 @@ schematic.region().set((0, 0, 0), block("stone"))
 schematic.export_png("offline.png")
 ```
 
-`prepare()` loads the version's core catalog, biomes, and bundled recipe datasets.
-Use `visuals=True` to also prepare the shared rendering catalog and visual assets.
-For conversion, use `data.prepare("1.21.1", target="1.20.4")` for each source and
-target pair. Conversion can use intermediate catalogs; preparing the endpoints
-alone does not prepare the whole route. The preparation method uses the same route
-selection as the converter and includes the intermediate biome data.
-Omit visuals for authoring, conversion, inspection, and sprite diagrams.
+`prepare()` loads the version's core catalog, biomes, and bundled recipes.
+`visuals=True` also prepares the shared rendering catalog and visual assets.
+Omit it for authoring, conversion, inspection, and sprite diagrams.
 
-The lower-level `load(version)` prepares only the core catalog. Optional datasets
-can still require a download. `load_visuals(version)` prepares the requested
-catalog, shared rendering catalog, and visual assets.
+For offline conversion, prepare each source and target route:
+
+```python
+data.prepare("1.21.1", target="1.20.4")
+```
+
+Conversion can use intermediate catalogs. This call prepares those catalogs and
+biomes using the converter's route selection. Preparing only the two endpoints
+can leave required data uncached.
+
+The lower-level `load(version)` prepares only the core catalog; optional datasets
+can still need a download. `load_visuals(version)` prepares the requested catalog,
+shared rendering catalog, and visual assets.
 
 `offline=True` prevents all Minecraft-data downloads. Missing or invalid cached
-files raise an error; no different catalog version is substituted. A first-time
-online preparation is required, and the cache directory must be kept afterward.
+files raise an error; no different version is substituted. Keep the prepared cache
+for later offline use.
 
-The prepared visual bundle records its sources and limitations in a manifest;
-see the [bundle specification](../../src/catalog/storage/native/SOURCE.md).
-Grass blocks and supported foliage use default colors from the bundle's colormaps;
-native renders do not evaluate per-position biomes. Unsupported tints emit diagnostics.
-Sprite diagrams use bundled wiki sheets and need no visual download.
+Browser WASM fetches catalogs through browser `fetch` and keeps downloaded bytes
+in memory for each `MinecraftData` instance. It does not expose the native cache
+or PNG/GLB rendering. See the [WASM quickstart](../guides/getting-started-wasm.md).
 
-Browser bindings fetch catalogs through browser `fetch` and keep downloaded bytes
-in memory for that `MinecraftData` instance. They do not expose the native
-filesystem cache or PNG/GLB rendering. See the [WASM README](../../bindings/wasm/README.md).
+## Rendering
+
+PNG/GLB rendering uses a shared Java 1.21.6 visual bundle for every schematic
+version. It converts a temporary block-state palette with the version-conversion
+rules; stored blocks remain unchanged. Inspect visual diagnostics for approximations.
+
+Grass blocks and supported foliage use default colors from the bundle's colormaps.
+Native renders do not evaluate per-position biomes. Unsupported tints produce
+diagnostics. Sprite diagrams use bundled wiki sheets and need no visual download.
+
+The prepared bundle has a manifest with sources and limitations. See the
+[bundle specification](../../src/catalog/storage/native/SOURCE.md).
+
+## Recipe data
+
+Load recipes through the same provider, alongside the matching item catalog:
+
+```python
+from mcschemora import MinecraftData
+
+data = MinecraftData()
+recipes = data.dataset("1.21.1", "recipes")
+items = data.dataset("1.21.1", "items")
+```
+
+Recipes come from official Java server JARs and are bundled in a shared,
+versioned tracker. Runtime use does not download or execute server JARs.
+
+| Dataset | Contents |
+| --- | --- |
+| `recipes` | Numeric output item IDs mapped to fixed-input, fixed-output recipes using `inShape`/`ingredients` and `result` |
+| `recipeDefinitions` | Original vanilla recipe definitions keyed by recipe ID |
+| `itemTags` | Item-tag IDs mapped to resolved numeric item IDs |
+
+Use the same version's `items` dataset to resolve numeric IDs. The recipe index
+covers crafting, cooking, stonecutting, smithing, and transmutation. Special and
+component-dependent recipes, including brewing, remain in `recipeDefinitions`.
+
+The index enumerates alternatives once per distinct ingredient; repeated uses
+share a choice. Original definitions and tags retain the full alternatives,
+including mixed-material combinations. Crafting recipes come first; entries are
+otherwise ordered by recipe ID. See the
+[recipe source record](../../src/catalog/recipes/SOURCE.md) for tracker details
+and regeneration commands.
 
 ## Asset attribution
 
-The root [LICENSE](../../LICENSE) covers project code. Asset sources and terms
-remain documented alongside the assets:
-
-- [Runtime catalogs and visual assets](../../src/catalog/storage/native/SOURCE.md).
-- [Special block models](../../data/block-models/SOURCE.md) and their [license](../../data/block-models/LICENSE).
-- [Entity models](../../data/entity-models/README.md).
-- [Wiki sprite sheets](../../data/wiki-sprites/SOURCE.md).
-- [Generated catalog snapshots](../../src/catalog/data/SOURCE.md).
-- [Generated recipes](../../src/catalog/recipes/SOURCE.md).
-- [Material valuation profiles](../../data/cost/java/values/SOURCE.md).
-
-Keep these source records when updating or redistributing assets.
+The root [LICENSE](../../LICENSE) covers project code. Data and assets retain
+their own sources and terms. The [source overview](sources.md) links to upstream
+revisions, licenses, local changes, and regeneration instructions. Keep these
+records when updating or redistributing assets.

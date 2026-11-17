@@ -16,8 +16,8 @@ fn main() -> io::Result<()> {
             "licenses/wiki-sprites/SOURCE.md",
         ),
         (
-            "data/entity-models/README.md",
-            "licenses/entity-models/README.md",
+            "data/entity-models/SOURCE.md",
+            "licenses/entity-models/SOURCE.md",
         ),
         (
             "src/catalog/storage/native/SOURCE.md",

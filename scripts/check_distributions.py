@@ -16,7 +16,7 @@ NOTICES = (
     "NOTICE",
     "block-models/LICENSE",
     "block-models/SOURCE.md",
-    "entity-models/README.md",
+    "entity-models/SOURCE.md",
     "entity-models/ATTRIBUTION.json",
     "wiki-sprites/SOURCE.md",
     "wiki-sprites/ATTRIBUTION.json",
@@ -35,7 +35,10 @@ def check_metadata(content: bytes, version: str) -> None:
     project = tomllib.loads((ROOT / "pyproject.toml").read_text())["project"]
     assert metadata["License-Expression"] == project["license"], metadata["License-Expression"]
     assert metadata["Description-Content-Type"].startswith("text/markdown")
-    assert metadata.get_payload().startswith("# MCSchemora for Python")
+    description = metadata.get_payload(decode=True).decode("utf-8")
+    assert description.rstrip() == (ROOT / project["readme"]).read_text().rstrip(), (
+        "Package description differs from the project README"
+    )
     assert any("tiltedlabs-ai/mcschemora" in url for url in metadata.get_all("Project-URL", []))
     assert "whuang37/schemora" not in content.decode()
 
@@ -76,6 +79,10 @@ def check_source(path: Path, version: str) -> None:
             "bindings/python/Cargo.toml",
             "bindings/python/build.rs",
             "bindings/python/NOTICE",
+            "README.md",
+            "data/block-models/SOURCE.md",
+            "data/entity-models/SOURCE.md",
+            "data/wiki-sprites/SOURCE.md",
             "data/cost/java/values/SOURCE.md",
             "src/catalog/data/SOURCE.md",
             "src/catalog/recipes/SOURCE.md",

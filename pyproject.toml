@@ -8,7 +8,7 @@ dynamic = ["version"]
 authors = [{ name = "MCSchemora contributors" }]
 description = "Minecraft schematic authoring, editing, conversion, and rendering"
 requires-python = ">=3.10"
-readme = "bindings/python/README.md"
+readme = "README.md"
 license = "MIT AND MPL-2.0 AND LicenseRef-Minecraft-Assets"
 license-files = ["LICENSE", "bindings/python/NOTICE", "data/block-models/LICENSE"]
 keywords = ["minecraft", "schematic", "litematic", "nbt", "rendering"]

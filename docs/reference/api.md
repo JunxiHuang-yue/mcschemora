@@ -40,10 +40,10 @@ Arguments after `*` are keyword-only. Types and properties are documented below.
 
 ```python
 inspect_schematics(
-    schematics: list[Schematic],
+    schematics: Sequence[Schematic],
     *,
-    initial_items: list[tuple[str, int]] = (),
-) -> str
+    initial_items: Sequence[tuple[str, int]] = (),
+) -> dict
 ```
 
 Combines resource counts and inspection details for multiple schematics.
@@ -621,7 +621,7 @@ Loads and caches a parsed catalog dataset for a Java version.
 
 Prepares rendering assets and returns their cache directory.
 
-Also loads the requested and shared rendering catalogs for offline rendering.
+Loads the requested and shared rendering catalogs for offline rendering.
 
 **Args:** `version`: Java version, or latest. All versions use the 1.21.6 visual bundle.
 
@@ -1395,7 +1395,7 @@ _Item = tuple[str, int, str | None]
 
 ## Browser WASM
 
-See the [browser quickstart](../../bindings/wasm/README.md) for initialization, file import, and resource cleanup.
+See the [browser quickstart](../guides/getting-started-wasm.md) for initialization, file import, and resource cleanup.
 
 The complete declarations, including initialization types, are generated at `bindings/wasm/pkg/mcschemora.d.ts` during the browser build.
 

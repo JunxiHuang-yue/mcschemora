@@ -6,16 +6,7 @@ for each distinct variant. Definitions and resolved item tags use the same forma
 Numeric item IDs are mapped from the requested version's catalog when loading.
 Recipe order, ingredient order, output counts, and tag order are preserved.
 
-```sh
-python scripts/import_recipes.py
-python scripts/import_recipes.py --check
-```
-
-The importer refreshes all supported versions by default. Version arguments
-refresh only those versions within the tracker; `--check` compares deterministic
-output without writing. Full snapshot generation also refreshes its versions in
-the same tracker. No Java execution or third-party Python packages are required
-for recipe-only imports.
+## Sources
 
 The importer reads Mojang's version manifest, verifies downloaded version metadata
 and server JAR SHA1 hashes, and extracts default vanilla recipe and item-tag JSON
@@ -23,6 +14,8 @@ from the runtime JAR. It unwraps bundled server JARs when present. Optional
 experimental datapacks are excluded. Downloads are cached in the system temporary
 directory under `mcschemora-recipe-sources`; `--cache-dir` selects another directory.
 Remove the cache's `manifest.json` to refresh the version list.
+
+## Local data
 
 Item names are validated against the matching official registry snapshot where
 bundled, otherwise the pinned minecraft-data item catalog. Unknown required item
@@ -38,8 +31,8 @@ The tracker has two sections:
   A version can appear in at most one variant per entry. Missing entries stay
   absent for that version; there is no latest-version fallback.
 
-The public datasets retain their existing formats. `recipes` maps numeric output
-IDs to fixed-input, fixed-output recipes, including crafting, cooking,
+The public `recipes` dataset maps numeric output IDs to fixed-input, fixed-output
+recipes, including crafting, cooking,
 stonecutting, smithing, and transmutation. `recipeDefinitions` preserves original
 vanilla JSON. `itemTags` maps tag IDs to resolved numeric item IDs.
 
@@ -52,3 +45,25 @@ by recipe ID, with cooking and stonecutting following other indexed recipes.
 Compression omits timestamps and source filenames. Native and WASM builds embed
 only this tracker, decompress it once on first use, and cache reconstructed
 version datasets in `MinecraftData`. There is no runtime server download.
+
+## Updating
+
+Run these commands from the repository root:
+
+```sh
+python scripts/import_recipes.py
+python scripts/import_recipes.py --check
+```
+
+The importer refreshes all supported versions by default. Version arguments
+refresh only those versions within the tracker; `--check` compares deterministic
+output without writing. Full snapshot generation also refreshes its versions in
+the same tracker. No Java execution or third-party Python packages are required
+for recipe-only imports.
+
+## Terms
+
+Recipe definitions and tags come from Mojang's Minecraft Java runtimes. The
+project software license does not relicense Minecraft content. See
+[Minecraft's EULA](https://www.minecraft.net/en-us/eula) and
+[usage guidelines](https://www.minecraft.net/en-us/usage-guidelines).

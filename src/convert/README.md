@@ -1,6 +1,6 @@
 # Java version conversion
 
-Conversion module to switch between versions from 1.13 to 26.3
+Converts Java schematic data between versions 1.13 and 26.3.
 
 ## Organization
 
@@ -28,9 +28,8 @@ furnaces, brewing, variant components and Litematic scheduled ticks.
 
 Later schemas include structured text, tooltip consolidation, per-attribute
 display, expanded registry references, named pot-decoration stacks, split item
-animations, sign components and changed block-state NBT keys. Available older
-representations are used; independent new behaviors without an older equivalent
-produce specific errors.
+animations, sign components and changed block-state NBT keys. The converter uses older representations where available. New behaviors without
+an older equivalent produce specific errors.
 
 Explicit gameplay values are preserved when their identifiers and units stay
 the same. Vanilla balancing changes, such as wolf maximum-health increases,

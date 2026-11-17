@@ -3,9 +3,11 @@
 `emc.json` and `essentialsx.json` are fixed unit-value maps keyed by canonical
 Minecraft IDs. They are shared across game versions and applied only after
 `material_cost()` expands a build into primitives. Missing prices remain
-unpriced. Zero is a valid price. 
+unpriced. Zero is a valid price.
 
-## EMC
+## Sources and local data
+
+### ProjectE EMC
 
 Source: [ProjectE mc1.21.1](https://github.com/sinkillerj/ProjectE/tree/f432b0c66837759fb0731c9144dc53176b949c5d),
 commit `f432b0c66837759fb0731c9144dc53176b949c5d`.
@@ -58,7 +60,7 @@ Water source blocks have value 0 from ProjectE's free-water rule. Lava source
 blocks have value 64, using 1,000 fluid units per source block and the declared
 obsidian-to-lava conversion. Filled buckets retain their container cost.
 
-## EssentialsX
+### EssentialsX
 
 Source: [EssentialsX 2.x worth.yml](https://github.com/EssentialsX/Essentials/blob/e70bdb817c758474acb3a23a37cf961b2f716a50/Essentials/src/main/resources/worth.yml),
 commit `e70bdb817c758474acb3a23a37cf961b2f716a50`.
@@ -68,3 +70,15 @@ These are the official default server sell prices. Names from the
 Java 1.21.1 item/block catalog and the primitive policy are matched to scalar
 `worth` keys after removing the namespace and underscores, matching EssentialsX's
 [price lookup](https://github.com/EssentialsX/Essentials/blob/e70bdb817c758474acb3a23a37cf961b2f716a50/Essentials/src/main/java/com/earth2me/essentials/Worth.java).
+
+## Updating
+
+There is no valuation-profile generator in this repository. When changing a
+profile, retain the source revision, input hashes, and derivation rules in this
+record. Check unresolved items and zero-valued entries as well as priced items.
+
+## Terms
+
+The source links above identify the upstream ProjectE and EssentialsX files.
+Consult those projects for their notices and terms. These derived profiles do
+not change the terms of upstream material.
